@@ -17,8 +17,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_card"
+            android:layout_gravity="center|left"
+            android:background="@drawable/circularbordersolid"
             android:backgroundTint="@color/white"
+            android:foregroundGravity="center"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="8dp">
 
@@ -43,10 +46,11 @@
 
                 <TextView
                     android:id="@+id/bookingIDText"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="BookingID:"
+                    android:text="Reservation ID:"
+                    android:textColor="@color/goodgrey"
                     android:textStyle="bold" />
 
                 <TextView
@@ -57,7 +61,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
                     android:text="1234"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -70,10 +74,12 @@
 
                 <TextView
                     android:id="@+id/customerNameText"
-                    android:layout_width="80dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Name:" />
+                    android:text="User ID:"
+                    android:textColor="@color/goodgrey"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/customerName"
@@ -83,7 +89,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
                     android:text="Mr. Jenil Vekaria"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
             </LinearLayout>
 
 
@@ -97,10 +103,12 @@
 
                 <TextView
                     android:id="@+id/pickupDateText"
-                    android:layout_width="80dp"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Pickup:" />
+                    android:text="Rent Date:"
+                    android:textColor="@color/goodgrey"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pickupDate"
@@ -110,7 +118,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
                     android:text="07:33 p.m January, 1 2020"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -123,10 +131,12 @@
 
                 <TextView
                     android:id="@+id/returnDateText"
-                    android:layout_width="80dp"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Return:" />
+                    android:text="Return Date:"
+                    android:textColor="@color/goodgrey"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/returnDate"
@@ -136,7 +146,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
                     android:text="07:33 p.m January, 10 2020"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,7 +164,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center_horizontal"
                     android:text="Waiting for approval"
-                    android:textColor="#FF6D00" />
+                    android:textColor="@color/alert" />
             </LinearLayout>
 
         </LinearLayout>

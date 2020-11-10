@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.RegistrationActivity">
+    tools:context=".activity.RegisterActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -32,56 +32,52 @@
                 tools:layout_editor_absoluteY="210dp">
 
                 <TextView
-                    android:id="@+id/firstNameText"
+                    android:id="@+id/UserID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="64dp"
-                    android:text="First Name *"
+                    android:layout_marginTop="16dp"
+                    android:text="User ID"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/firstName"
-                    app:layout_constraintTop_toBottomOf="@+id/rent_A_Car" />
+                    app:layout_constraintStart_toStartOf="@+id/User_ID"
+                    app:layout_constraintTop_toBottomOf="@+id/profileUser" />
+
+                <TextView
+                    android:id="@+id/User_ID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/UserID" />
+
+                <TextView
+                    android:id="@+id/FirstNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="First Name "
+                    android:textColor="@color/colorSecondary"
+                    app:layout_constraintStart_toStartOf="@+id/UserID"
+                    app:layout_constraintTop_toBottomOf="@+id/User_ID" />
 
                 <EditText
                     android:id="@+id/firstName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
-
-                <TextView
-                    android:id="@+id/middleNameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Middle Name"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/firstNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/firstName" />
-
-                <EditText
-                    android:id="@+id/middleName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/firstName"
-                    app:layout_constraintStart_toStartOf="@+id/firstName"
-                    app:layout_constraintTop_toBottomOf="@+id/middleNameText" />
+                    app:layout_constraintEnd_toEndOf="@+id/User_ID"
+                    app:layout_constraintStart_toStartOf="@+id/User_ID"
+                    app:layout_constraintTop_toBottomOf="@+id/FirstNameText" />
 
                 <TextView
                     android:id="@+id/lastNameText"
@@ -90,8 +86,8 @@
                     android:layout_marginTop="8dp"
                     android:text="Last Name *"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/middleNameText"
-                    app:layout_constraintTop_toBottomOf="@+id/middleName" />
+                    app:layout_constraintStart_toStartOf="@+id/FirstNameText"
+                    app:layout_constraintTop_toBottomOf="@+id/firstName" />
 
                 <EditText
                     android:id="@+id/lastName"
@@ -100,150 +96,81 @@
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/middleName"
-                    app:layout_constraintStart_toStartOf="@+id/middleName"
+                    app:layout_constraintEnd_toEndOf="@+id/firstName"
+                    app:layout_constraintStart_toStartOf="@+id/firstName"
                     app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
 
                 <TextView
-                    android:id="@+id/emailText"
+                    android:id="@+id/adminText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Email"
+                    android:text="Email *"
                     android:textColor="@color/colorSecondary"
                     app:layout_constraintStart_toStartOf="@+id/lastNameText"
                     app:layout_constraintTop_toBottomOf="@+id/lastName" />
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/adminID"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/lastName"
                     app:layout_constraintStart_toStartOf="@+id/lastName"
-                    app:layout_constraintTop_toBottomOf="@+id/emailText" />
+                    app:layout_constraintTop_toBottomOf="@+id/adminText" />
 
                 <TextView
                     android:id="@+id/licenseText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Driver License *"
+                    android:layout_marginTop="16dp"
+                    android:text="Phone Number *"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/emailText"
-                    app:layout_constraintTop_toBottomOf="@+id/email" />
+                    app:layout_constraintStart_toStartOf="@+id/adminText"
+                    app:layout_constraintTop_toBottomOf="@+id/adminID" />
 
                 <EditText
-                    android:id="@+id/license"
+                    android:id="@+id/ContactNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:inputType="textPersonName|phone"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/email"
-                    app:layout_constraintStart_toStartOf="@+id/email"
+                    app:layout_constraintEnd_toEndOf="@+id/adminID"
+                    app:layout_constraintStart_toStartOf="@+id/adminID"
                     app:layout_constraintTop_toBottomOf="@+id/licenseText" />
 
-                <TextView
-                    android:id="@+id/expiryText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Expiry Date *"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/licenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/license" />
-
-                <EditText
-                    android:id="@+id/expiry_date_underline"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/license"
-                    app:layout_constraintStart_toStartOf="@+id/license"
-                    app:layout_constraintTop_toBottomOf="@+id/expiryText" />
-
-                <TextView
-                    android:id="@+id/expiryDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="YYYY-MM-DD"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/expiry_date_underline"
-                    app:layout_constraintStart_toStartOf="@+id/expiry_date_underline"
-                    app:layout_constraintTop_toTopOf="@+id/expiry_date_underline" />
-
-                <TextView
-                    android:id="@+id/dobText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Date of Birth *"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/expiryText"
-                    app:layout_constraintTop_toBottomOf="@+id/expiry_date_underline" />
-
-                <EditText
-                    android:id="@+id/dob_field_underline"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/expiry_date_underline"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/expiry_date_underline"
-                    app:layout_constraintTop_toBottomOf="@+id/dobText" />
-
-                <TextView
-                    android:id="@+id/dob"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="YYYY-MM-DD"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/dob_field_underline"
-                    app:layout_constraintStart_toStartOf="@+id/dob_field_underline"
-                    app:layout_constraintTop_toTopOf="@+id/dob_field_underline" />
 
                 <TextView
                     android:id="@+id/phoneNoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Phone Number *"
+                    android:text="Address *"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/dobText"
-                    app:layout_constraintTop_toBottomOf="@+id/dob_field_underline" />
+                    app:layout_constraintStart_toStartOf="@+id/ContactNo"
+                    app:layout_constraintTop_toBottomOf="@+id/ContactNo" />
 
                 <EditText
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/addressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
-                    android:inputType="phone"
-                    android:textColor="@android:color/white"
+                    android:inputType="text"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/dob_field_underline"
-                    app:layout_constraintStart_toStartOf="@+id/dob_field_underline"
+                    app:layout_constraintEnd_toEndOf="@+id/ContactNo"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/ContactNo"
                     app:layout_constraintTop_toBottomOf="@+id/phoneNoText" />
 
                 <TextView
@@ -251,10 +178,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Street *"
+                    android:text="Postcode*"
                     android:textColor="@color/colorSecondary"
                     app:layout_constraintStart_toStartOf="@+id/phoneNoText"
-                    app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+                    app:layout_constraintTop_toBottomOf="@+id/addressText" />
 
                 <EditText
                     android:id="@+id/street"
@@ -263,57 +190,57 @@
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/phoneNumber"
-                    app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+                    app:layout_constraintEnd_toEndOf="@+id/addressText"
+                    app:layout_constraintStart_toStartOf="@+id/addressText"
                     app:layout_constraintTop_toBottomOf="@+id/streetText" />
 
                 <TextView
-                    android:id="@+id/cityText"
+                    android:id="@+id/userlicenseText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="City *"
+                    android:text="Driver License No *"
                     android:textColor="@color/colorSecondary"
                     app:layout_constraintStart_toStartOf="@+id/streetText"
                     app:layout_constraintTop_toBottomOf="@+id/street" />
 
                 <EditText
-                    android:id="@+id/city"
+                    android:id="@+id/user_license_no"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/street"
                     app:layout_constraintStart_toStartOf="@+id/street"
-                    app:layout_constraintTop_toBottomOf="@+id/cityText" />
+                    app:layout_constraintTop_toBottomOf="@+id/userlicenseText" />
 
                 <TextView
-                    android:id="@+id/postalCodeText"
+                    android:id="@+id/userlicenseexpiryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Postal Code *"
+                    android:text="Exprity Date *"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/cityText"
-                    app:layout_constraintTop_toBottomOf="@+id/city" />
+                    app:layout_constraintStart_toStartOf="@+id/userlicenseText"
+                    app:layout_constraintTop_toBottomOf="@+id/user_license_no" />
 
                 <EditText
-                    android:id="@+id/postalCode"
+                    android:id="@+id/user_license_expiry"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
+                    android:inputType="date|datetime"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/city"
-                    app:layout_constraintStart_toStartOf="@+id/city"
-                    app:layout_constraintTop_toBottomOf="@+id/postalCodeText" />
+                    app:layout_constraintEnd_toEndOf="@+id/user_license_no"
+                    app:layout_constraintStart_toStartOf="@+id/user_license_no"
+                    app:layout_constraintTop_toBottomOf="@+id/userlicenseexpiryText" />
 
                 <TextView
                     android:id="@+id/passwordText"
@@ -322,8 +249,8 @@
                     android:layout_marginTop="8dp"
                     android:text="Password *"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/postalCodeText"
-                    app:layout_constraintTop_toBottomOf="@+id/postalCode" />
+                    app:layout_constraintStart_toStartOf="@+id/userlicenseexpiryText"
+                    app:layout_constraintTop_toBottomOf="@+id/user_license_expiry" />
 
                 <EditText
                     android:id="@+id/password"
@@ -332,11 +259,11 @@
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/postalCode"
+                    app:layout_constraintEnd_toEndOf="@+id/user_license_expiry"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/postalCode"
+                    app:layout_constraintStart_toStartOf="@+id/user_license_expiry"
                     app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
                 <TextView
@@ -356,7 +283,7 @@
                     android:backgroundTint="@color/colorSecondary"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/password"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -367,7 +294,7 @@
                     android:id="@+id/register"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/round_button"
                     android:text="Register"
                     android:textColor="@android:color/white"
@@ -382,46 +309,41 @@
                     android:id="@+id/a_member"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="128dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="16dp"
                     android:text="Already a member?"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/black"
                     app:fontFamily="@font/roboto"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/register"
-                    app:layout_constraintTop_toBottomOf="@+id/register" />
+                    app:layout_constraintTop_toBottomOf="@+id/register"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/registration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="128dp"
+                    android:layout_marginTop="44dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     android:text="Registration"
                     android:textColor="@color/colorSecondary"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/nunito"
-                    app:layout_constraintEnd_toEndOf="@+id/rent_A_Car"
-                    app:layout_constraintHorizontal_bias="0.536"
-                    app:layout_constraintStart_toStartOf="@+id/rent_A_Car"
+                    app:layout_constraintEnd_toEndOf="@+id/profileUser"
+                    app:layout_constraintHorizontal_bias="0.764"
+                    app:layout_constraintStart_toStartOf="@+id/profileUser"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/rent_A_Car"
+                <ImageView
+                    android:id="@+id/profileUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Rent-A-Car"
-                    android:textColor="@color/colorSecondary"
-                    android:textSize="40sp"
-                    android:textStyle="bold"
+
+
+                    android:clickable="true"
+                    android:src="@drawable/avatar_man_1"
                     app:fontFamily="@font/nunito_black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"

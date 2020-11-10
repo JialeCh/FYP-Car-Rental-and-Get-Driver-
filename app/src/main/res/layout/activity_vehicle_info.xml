@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.VehicleInfoActivity"
+    tools:context=".ActivityPages.CarInfoActivity"
     >
 
     <TextView
@@ -14,13 +14,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="Year Manufacturer Model"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/back"
-        />
+        app:layout_constraintTop_toTopOf="@+id/back" />
 
     <Button
         android:id="@+id/back"
@@ -28,7 +27,7 @@
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/ic_arrow_back"
+        android:background="@drawable/ic_arrow_back_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,26 +49,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
+                <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/vehicleImage"
+                    app:auto_cycle="true"
+                    app:delay="0"
+                    app:period="2000"
+                    app:corner_radius="20"
                     android:layout_width="0dp"
                     android:layout_height="240dp"
                     android:layout_marginTop="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@drawable/ic_logoif"
+                    />
 
                 <TextView
                     android:id="@+id/vehiclePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/price_tag"
-                    android:backgroundTint="#3803A9F4"
+                    android:backgroundTint="@color/yellow"
                     android:fontFamily="@font/roboto_medium"
-                    android:padding="15dp"
-                    android:text="$50/Day"
+                    android:padding="13dp"
+                    android:text="RM 50/Day"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
                     app:layout_constraintTop_toBottomOf="@+id/vehicleImage" />
 
@@ -175,8 +181,8 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Vehicle Specs"
-                            android:textColor="@color/colorPrimary"
+                            android:text="Car Specs"
+                            android:textColor="@color/colorSecondary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -195,11 +201,13 @@
                             android:id="@+id/typeText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Type"
+                            android:text="Fuel_Type"
                             app:layout_constraintBottom_toBottomOf="@+id/seatsText"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
-                            app:layout_constraintTop_toTopOf="@+id/seatsText" />
+                            app:layout_constraintTop_toTopOf="@+id/seatsText"
+                            app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
                             android:id="@+id/seatsText"
@@ -217,7 +225,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="32dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Mileage"
+                            android:text="Location"
                             app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
 
@@ -225,12 +233,13 @@
                             android:id="@+id/modelText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginEnd="44dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Model"
+                            android:text="Car ID"
                             app:layout_constraintBottom_toBottomOf="@+id/manufacturerText"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/manufacturerText" />
+                            app:layout_constraintTop_toTopOf="@+id/manufacturerText"
+                            app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
                             android:id="@+id/manufacturerText"
@@ -240,8 +249,10 @@
                             android:text="Manufacturer"
                             app:layout_constraintBottom_toBottomOf="@+id/yearText"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.53"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/yearText" />
+                            app:layout_constraintTop_toTopOf="@+id/yearText"
+                            app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
                             android:id="@+id/year"
@@ -250,7 +261,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
                             android:text="Year"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/yearText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
 
@@ -261,7 +272,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
                             android:text="Type"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/typeText"
                             app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
@@ -272,7 +283,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
                             android:text="Seats"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/seatsText"
                             app:layout_constraintTop_toBottomOf="@+id/seatsText" />
 
@@ -282,8 +293,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Mileage"
-                            android:textColor="@color/colorPrimary"
+                            android:text="Location"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/mileageText"
                             app:layout_constraintTop_toBottomOf="@+id/mileageText" />
 
@@ -294,7 +305,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
                             android:text="Model"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toBottomOf="@+id/modelText" />
 
@@ -305,7 +316,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
                             android:text="Manufacturer"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
 
@@ -347,7 +358,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Insurance"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -383,7 +394,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="30dp"
-                                    android:text="$0"
+                                    android:text="RM 0"
                                     android:textSize="12sp" />
 
                                 <LinearLayout
@@ -414,7 +425,7 @@
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
                                             android:text="Collision Damage Waiver"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -431,7 +442,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Supplemental Liability Protection"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -457,7 +468,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Accident Insurance"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -474,7 +485,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Effects Coverage"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -501,7 +512,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="30dp"
-                                    android:text="$15"
+                                    android:text="RM 15"
                                     android:textSize="12sp" />
 
                                 <LinearLayout
@@ -532,7 +543,7 @@
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
                                             android:text="Collision Damage Waiver"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -549,7 +560,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Supplemental Liability Protection"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -575,7 +586,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Accident Insurance"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -592,7 +603,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Effects Coverage"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -620,7 +631,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="30dp"
-                                    android:text="$25"
+                                    android:text="RM 25"
                                     android:textSize="12sp" />
 
                                 <LinearLayout
@@ -651,7 +662,7 @@
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
                                             android:text="Collision Damage Waiver"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -668,7 +679,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Supplemental Liability Protection"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -694,7 +705,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Accident Insurance"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
 
                                         <ImageView
@@ -711,7 +722,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:text="Personal Effects Coverage"
-                                            android:textColor="@color/colorPrimary"
+                                            android:textColor="@color/black"
                                             android:textSize="12sp" />
                                     </LinearLayout>
 
@@ -731,7 +742,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Book This Car"
+                    android:text="Reserve This Car"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"

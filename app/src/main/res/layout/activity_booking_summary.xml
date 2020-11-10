@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.VehicleInfoActivity">
+    tools:context=".ActivityPages.CarInfoActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Summary"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorSecondary"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/ic_arrow_back"
+                    android:background="@drawable/ic_arrow_back_24dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +71,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="@drawable/vehicle_info_card"
                         android:paddingBottom="10dp">
 
@@ -95,7 +95,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Driver Details"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -120,7 +120,8 @@
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Name:" />
+                                    android:text="Name:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
                                     android:id="@+id/name"
@@ -129,7 +130,7 @@
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
                                     android:text="Mr. Jenil Vekaria"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
 
                             </LinearLayout>
 
@@ -140,20 +141,21 @@
                                 android:paddingTop="10dp">
 
                                 <TextView
-                                    android:id="@+id/emailText"
+                                    android:id="@+id/adminText"
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Email:" />
+                                    android:text="Email:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
-                                    android:id="@+id/email"
+                                    android:id="@+id/adminID"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
                                     android:text="jenilvekaria@yahoo.ca"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
 
                             </LinearLayout>
 
@@ -168,16 +170,17 @@
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Phone:" />
+                                    android:text="Phone:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
-                                    android:id="@+id/phoneNumber"
+                                    android:id="@+id/addressText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
                                     android:text="(416) 000 0000"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
 
                             </LinearLayout>
 
@@ -227,7 +230,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Summary"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -255,7 +258,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_bold"
                                     android:text="2020 Toyota Avalon"
-                                    android:textColor="@color/colorPrimary"
+                                    android:textColor="@color/black"
                                     android:textSize="18sp" />
                             </LinearLayout>
 
@@ -270,7 +273,8 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Rate:" />
+                                    android:text="Rate:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
                                     android:id="@+id/rate"
@@ -279,7 +283,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
                                     android:text="$50/Day"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -293,7 +297,8 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Total Days:" />
+                                    android:text="Total Days:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
                                     android:id="@+id/totalDays"
@@ -302,7 +307,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
                                     android:text="9 Days"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
                             </LinearLayout>
 
 
@@ -317,7 +322,8 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Pickup:" />
+                                    android:text="Pickup:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
                                     android:id="@+id/pickup"
@@ -326,7 +332,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
                                     android:text="11:00PM\t\tWeb, Dec 05"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -340,7 +346,8 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Return:" />
+                                    android:text="Return:"
+                                    android:textColor="@color/goodgrey" />
 
                                 <TextView
                                     android:id="@+id/dropoff"
@@ -349,7 +356,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
                                     android:text="03:00PM\t\tWeb, Dec 17"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
                             </LinearLayout>
                         </LinearLayout>
 
@@ -389,7 +396,7 @@
                                     android:layout_weight="1"
                                     android:fontFamily="@font/roboto_bold"
                                     android:text="Insurance"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/colorSecondary" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -412,7 +419,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="5dp"
                                     android:text="None"
-                                    android:textColor="@color/colorPrimary" />
+                                    android:textColor="@color/black" />
 
                             </LinearLayout>
 
@@ -428,6 +435,7 @@
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
                                     android:text="$0/Day"
+                                    android:textColor="@color/goodgrey"
                                     android:textSize="12sp" />
                             </LinearLayout>
 
@@ -475,7 +483,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:fontFamily="@font/roboto"
-                                        android:text="Total:" />
+                                        android:text="Total:"
+                                        android:textColor="@color/goodgrey" />
 
                                     <TextView
                                         android:id="@+id/totalCost"
@@ -514,9 +523,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
-                    android:enabled="false"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Confirm and Book"
+                    android:text="Confirm and Reserve"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"

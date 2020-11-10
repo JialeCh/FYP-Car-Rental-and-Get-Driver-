@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".ActivityPages.LoginActivity">
+
+
+        <TextView
+            android:id="@+id/welcome_to_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Welcome to"
+            android:textColor="@color/colorSecondary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito"
+            app:layout_constraintEnd_toEndOf="@+id/profileUser"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/profileUser"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Ez-Rental"
+            android:textColor="@color/colorSecondary"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_to_title" />
+
+        <TextView
+            android:id="@+id/admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Admin"
+            android:textColor="@color/colorSecondary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/nunito_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileUser" />
+
+        <EditText
+            android:id="@+id/adminID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/colorSecondary"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminText" />
+
+        <TextView
+            android:id="@+id/adminText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="64dp"
+            android:text="Admin ID"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintStart_toStartOf="@+id/adminID"
+            app:layout_constraintTop_toBottomOf="@+id/profileUser" />
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Password"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintStart_toStartOf="@+id/adminText"
+            app:layout_constraintTop_toBottomOf="@+id/adminID" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorSecondary"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/adminID"
+            app:layout_constraintStart_toStartOf="@+id/adminID"
+            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/buttonSize"
+            android:layout_marginBottom="140dp"
+            android:background="@drawable/round_button"
+            android:onClick="loginBtn"
+            android:text="Login"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:fontFamily="@font/roboto_mono_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintVertical_bias="0.536" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

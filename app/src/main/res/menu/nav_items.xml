@@ -2,15 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_vehicle"
-        android:icon="@drawable/vehicle_icon"
-        android:title="Vehicle" />
+        android:id="@+id/nav_payment"
+        android:icon="@drawable/ic_transac"
+        android:title="Transaction" />
     <item
         android:id="@+id/nav_booking"
         android:icon="@drawable/book_icon"
-        android:title="Bookings" />
+        android:title="Reservation" />
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/search_icon"
+        android:title="Search" />
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/profile_icon"
         android:title="Account" />
+
 </menu>

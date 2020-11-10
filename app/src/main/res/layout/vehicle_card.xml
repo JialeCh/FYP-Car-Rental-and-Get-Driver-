@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    tools:context=".test">
+    >
 
     <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
+        android:layout_width="360dp"
         android:layout_height="240dp"
+        android:layout_gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -25,7 +26,7 @@
             android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/round_card"
+            android:background="@drawable/circular_grey_bordersolid"
             android:backgroundTint="@android:color/white">
 
             <TextView
@@ -34,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Vehicle Name"
+                android:fontFamily="@font/nunito_black"
+                android:text="Car Name"
                 android:textColor="@color/statusBarColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -44,14 +45,15 @@
 
             <Button
                 android:id="@+id/book"
-                android:layout_width="124dp"
-                android:layout_height="36dp"
+                android:layout_width="152dp"
+                android:layout_height="35dp"
                 android:background="@drawable/select_button"
                 android:backgroundTint="@color/colorSecondary"
-                android:fontFamily="@font/roboto_light"
-                android:text="Book"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Status"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -59,10 +61,11 @@
                 android:id="@+id/detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:text="Details"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Car Details"
+                android:textColor="@color/goodgrey"
+                android:textSize="14sp"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/book"
                 app:layout_constraintStart_toStartOf="@+id/vehicle"
                 app:layout_constraintTop_toTopOf="@+id/book" />
@@ -71,21 +74,49 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_thin"
-                android:text="$75/day"
-                android:textColor="#333333"
-                android:textSize="14sp"
+                android:fontFamily="@font/roboto_light"
+                android:text="RM75/day"
+                android:textColor="@color/black"
+                android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="@+id/vehicle"
                 app:layout_constraintTop_toBottomOf="@+id/vehicle" />
 
             <ImageView
                 android:id="@+id/vehicleImage"
-                android:layout_width="350dp"
-                android:layout_height="240dp"
+                android:layout_width="358dp"
+                android:layout_height="150dp"
+                android:backgroundTint="#FFFFFF"
                 app:layout_constraintBottom_toTopOf="@+id/book"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/price" />
+                app:layout_constraintTop_toBottomOf="@+id/price"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/vehicleImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rateCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="25dp"
+                android:text="00.0"
+                android:textColor="@color/theme_gray"
+                app:layout_constraintBottom_toTopOf="@+id/vehicleImage"
+                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

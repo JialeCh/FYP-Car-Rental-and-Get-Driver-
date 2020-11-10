@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#222431</color>
-    <color name="colorSecondary">#03A9F4</color>
+    <color name="colorPrimary">#EEEEEE</color>
+    <color name="colorSecondary">#292637</color>
     <color name="colorAccent">#03A9F4</color>
-    <color name="statusBarColor">#102027</color>
+    <color name="statusBarColor">#292637</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="circle_color_default_gray">#BDBDBD</color>
+    <color name="dim">#80000000</color>
+    <color name="light_bg">#F6F6F6</color>
+    <color name="default_text_color">#80000000</color>
+    <color name="theme_gray">#666666</color>
+    <color name="grey">#E9EAEE</color>
+    <color name="yellow">#F8BA0F</color>
+    <color name="goodgrey">#535353</color>
+    <color name="blue">#293859</color>
+    <color name="lightgrey">#EEEEEE</color>
+    <color name="light_blue">#3C4269</color>
+    <color name="light_blu">#434763</color>
+    <color name="Transparent">#00000000</color>
+    <color name="alert">#FFB300</color>
+    <color name="test">#23B1B9E6</color>
+    <color name="test2">#92FFFFEB</color>
+    <color name="gray">#4B0F0F0F</color>
+    <color name="test3">#FFF6AF</color>
+    <color name="test4">#54FFFF00</color>
+
 </resources>

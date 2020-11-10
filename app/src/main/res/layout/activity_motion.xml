@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:layoutDescription="@xml/motion_start"
+    android:background="@color/colorPrimary"
+    android:id="@+id/start_screen"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_logoif"
+         />
+
+
+    <ImageView
+        android:id="@+id/image_text_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_name"
+        tools:layout_editor_absoluteX="543dp"
+        tools:layout_editor_absoluteY="67dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/view_option"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/image_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circularbordersolid"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:background="@drawable/circular_grey_bordersolid"
+                    android:src="@drawable/selector_user" />
+
+                <TextView
+                    android:id="@+id/txt_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="User"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/image_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:background="@drawable/circularbordersolid"
+                android:clickable="true"
+                android:focusable="true"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:background="@drawable/circular_grey_bordersolid"
+                    android:src="@drawable/selector_admin" />
+
+                <TextView
+                    android:id="@+id/txt_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Admin"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/view_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/round_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="12sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue as"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_arrow" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/Guest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:fontFamily="@font/roboto_light"
+            android:text="Login As Guest ?"
+            android:textColor="@color/default_text_color"
+            app:fontFamily="@font/roboto"
+            app:layout_constraintEnd_toEndOf="@+id/view_continue"
+            app:layout_constraintTop_toBottomOf="@+id/view_continue" />
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
