@@ -76,7 +76,7 @@ public class AccountFragment extends Fragment {
     private Bitmap FixBitmap;
     private byte[] image;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
-    String HttpURL = "http://192.168.1.3/android_login_api/UpdateUser.php";
+
     String userrole;
     String finalResult;
     HashMap<String, String> hashMap = new HashMap<>();
@@ -333,7 +333,7 @@ public class AccountFragment extends Fragment {
             protected String doInBackground(String... params) {
                 hashMap.put("User_ID", params[0]);
                 hashMap.put("User_Password", params[1]);
-                finalResult = httpParse.postRequest(hashMap, HttpURL);
+                finalResult = httpParse.postRequest(hashMap,AppConfig.Url_UpdateUser);
 
                 return finalResult;
             }

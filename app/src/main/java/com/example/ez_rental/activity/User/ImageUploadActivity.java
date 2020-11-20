@@ -9,6 +9,7 @@ import android.util.Base64;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ez_rental.Model.User;
+import com.example.ez_rental.app.AppConfig;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -58,7 +59,7 @@ public class ImageUploadActivity extends AppCompatActivity {
         FixBitmap = BitmapFactory.decodeByteArray(byteArray2, 0, byteArray2.length);
         ConvertImage = Base64.encodeToString(byteArray2, Base64.DEFAULT);
         if(activity.contains("User_Profile")){
-            Url ="http://192.168.1.3/xx/upload-image-to-server.php";
+            Url = AppConfig.profile_Image;
         }
         UploadImageToServer();
 

@@ -26,6 +26,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ez_rental.Model.Brand;
 import com.example.ez_rental.R;
+import com.example.ez_rental.app.AppConfig;
 import com.example.ez_rental.app.AppController;
 
 import org.json.JSONArray;
@@ -309,7 +310,7 @@ public class AddCarActivity extends Activity {
         String tag_string_req = "req_add";
 
         StringRequest strReq = new StringRequest(Method.POST,
-                "http://192.168.1.3/android_login_api/addCar.php", response -> {
+                AppConfig.Url_addCar, response -> {
 
 
                     int jsonStart = response.indexOf("{");
@@ -377,7 +378,7 @@ public class AddCarActivity extends Activity {
 
     private void loadProducts() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://192.168.1.3/android_login_api/getBrand.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.Url_viewBrand,
                 response -> {
                     try {
 

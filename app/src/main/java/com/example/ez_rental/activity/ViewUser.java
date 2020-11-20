@@ -1,8 +1,7 @@
-package com.example.ez_rental.activity.brand;
+package com.example.ez_rental.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +14,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ez_rental.Adapter.BrandAdapter;
-import com.example.ez_rental.Model.Brand;
+import com.example.ez_rental.Adapter.UserAdapter;
+import com.example.ez_rental.Model.User;
 import com.example.ez_rental.R;
 import com.example.ez_rental.app.AppConfig;
 
@@ -26,25 +25,25 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ViewBrandActivity extends AppCompatActivity implements BrandAdapter.onBrandListener {
+public class ViewUser extends AppCompatActivity implements UserAdapter.onUserListener {
 
     private RecyclerView recyclerView;
     private TextView txtResult;
     private ImageView btnBack;
-    private ArrayList<Brand> list = new ArrayList<>();
-    private ArrayList<Brand> newlist = new ArrayList<>();
+    private ArrayList<User> list = new ArrayList<>();
+    private ArrayList<User> newlist = new ArrayList<>();
     SwipeRefreshLayout swipeRefreshLayout;
-    private BrandAdapter adapter;
-    private ImageView icadd;
+    private UserAdapter adapter;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_brand);
+        setContentView(R.layout.user_view);
         init();
         Intent intent = getIntent();
 
         adapter=loadProducts();
-        checkAdapter(list);
+
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             adapter=loadProducts();
@@ -66,21 +65,13 @@ public class ViewBrandActivity extends AppCompatActivity implements BrandAdapter
         btnBack = findViewById(R.id.btnBack);
         txtResult = findViewById(R.id.textView2);
         btnBack.setOnClickListener(v -> finish());
-        icadd = findViewById(R.id.icadd);
-        icadd.setOnClickListener(v -> {
-            Intent CarInfoPage = new Intent(this, addBrand.class);
-            startActivity(CarInfoPage);
-        });
-    }
-
-    private void checkAdapter(ArrayList<Brand> adapters){
-
-            txtResult.setVisibility(View.INVISIBLE);
 
     }
-    private BrandAdapter loadProducts() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.Url_viewBrand,
+
+    private UserAdapter loadProducts() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.HttpURL_getUser,
                 response -> {
                     try {
 
@@ -89,18 +80,18 @@ public class ViewBrandActivity extends AppCompatActivity implements BrandAdapter
                         //traversing through all the object
                         for (int i = 0; i < array.length(); i++) {
                             //getting product object from json array
-                            JSONObject product = array.getJSONObject(i);
+                            JSONObject user = array.getJSONObject(i);
                             //adding the product to product list
-                            list.add(new Brand(
-
-                                    product.getString("Brand_Id"),
-                                    product.getString("Brand_Name"),
-                                    product.getString("description"),
-                                    product.getString("brand_status"),
-                                    product.getString("reason"),
-                                    product.getString("Creation_Date"),
-                                    product.getString("Updated_Date"),
-                                    product.getString("Admin_Id")
+                            list.add(new User(
+                           user.getString("User_ID"),
+                           user.getString("Username"),
+                           user.getString("User_Email"),
+                            user.getString("User_ContactNo"),
+                            user.getString("Address"),
+                            user.getString("User_Password"),
+                             user.getString("User_Profile"),
+                                    user.getString("Driver_license"),
+                            user.getString("License_ExpiryDate")
                             ));
                         }
                     } catch (JSONException e) {
@@ -112,30 +103,21 @@ public class ViewBrandActivity extends AppCompatActivity implements BrandAdapter
 
                 });
 
-        newlist.clear();
-        for(int i=0; i<list.size();i++){
 
-                newlist.add(list.get(i)) ;
-
-        }
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager( getApplicationContext()));
-        adapter = new BrandAdapter(newlist, getApplicationContext(), this );
+        adapter = new UserAdapter(list, getApplicationContext(), this );
         recyclerView.setAdapter(adapter);
         //adding our string request to queue
         Volley.newRequestQueue( getApplicationContext()).add(stringRequest);
-        checkAdapter(newlist);
+
         return adapter;
     }
     @Override
     public void onClick(int position) {
 
-        Intent CarInfoPage = new Intent(this, EditBrand.class);
-        CarInfoPage.putExtra("Brand", newlist.get(position));
-
-        startActivity(CarInfoPage);
     }
 
 

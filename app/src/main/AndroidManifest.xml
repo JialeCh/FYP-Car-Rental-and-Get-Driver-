@@ -24,7 +24,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
+        <activity android:name="com.example.ez_rental.activity.AdminMenu" />
         <activity android:name="com.example.ez_rental.activity.Reservation.ViewReservationActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name="com.example.ez_rental.activity.Reservation.ReservationCompleteActivity" />
@@ -38,19 +38,18 @@
         <activity android:name="com.example.ez_rental.activity.User.UserViewActivity"
             android:theme="@style/AppTheme2"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name="com.example.ez_rental.activity.AdminViewActivity" />
         <activity android:name="com.example.ez_rental.activity.User.GuestViewActivity"
             android:theme="@style/AppTheme2"/>
         <activity android:name="com.example.ez_rental.activity.car.AddCarActivity" />
         <activity android:name="com.example.ez_rental.activity.car.CarImageUploadActivity" />
         <activity android:name="com.example.ez_rental.activity.car.EditCarActivity" />
+        <activity android:name="com.example.ez_rental.activity.car.ViewCar" />
         <activity android:name="com.example.ez_rental.activity.carDriver.AddCarDriverActivity" />
+        <activity android:name="com.example.ez_rental.activity.carDriver.ViewCarDriver" />
         <activity android:name="com.example.ez_rental.activity.carDriver.EditCarDriverActivity" />
         <activity android:name="com.example.ez_rental.activity.Reservation.ReturnPlaceActivity" />
-        <activity android:name="com.example.ez_rental.activity.AddVehicleActivity" />
         <activity android:name="com.example.ez_rental.activity.User.UpdateActivity" />
-
-        <activity android:name="com.example.ez_rental.activity.AddVehicleCategoryActivity" />
+        <activity android:name="com.example.ez_rental.activity.ViewUser" />
         <activity android:name="com.example.ez_rental.activity.User.RegisterActivity" />
         <activity android:name="com.example.ez_rental.activity.User.LoginActivity" />
         <activity android:name="com.example.ez_rental.activity.User.ForgotPassword"

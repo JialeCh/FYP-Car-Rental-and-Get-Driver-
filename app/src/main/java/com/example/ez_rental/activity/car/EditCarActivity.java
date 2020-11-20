@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -20,15 +21,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request.Method;
+import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.ez_rental.Model.Brand;
 import com.example.ez_rental.Model.Car;
 import com.example.ez_rental.R;
+import com.example.ez_rental.activity.helper.HttpParse;
 import com.example.ez_rental.activity.helper.SessionManager;
-import com.example.ez_rental.app.AppController;
+import com.example.ez_rental.app.AppConfig;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,8 +44,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 
@@ -61,13 +64,17 @@ public class EditCarActivity extends Activity {
     private  boolean chk1,chk2,chk3 = true;
     private SessionManager session;
     List<SlideModel> slideModels=new ArrayList<>();
-
+    HashMap<String, String> hashMap = new HashMap<>();
+    String finalResult;
+    HttpParse httpParse = new HttpParse();
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
     Bitmap FixBitmap;
     byte[] image1;
     byte[] image2;
     byte[] image3;
     private int count =0;
+    private ArrayList<Brand> list = new ArrayList<>();
+    private ArrayList<Brand> newlist = new ArrayList<>();
     private static final int IMAGE_PICKER_SELECT = 999;
 
     @Override
@@ -79,23 +86,6 @@ public class EditCarActivity extends Activity {
         listenHandler();
         session = new SessionManager(getApplicationContext());
 
-        // Check if user is already logged in or not
-        if (session.isLoggedIn()) {
-
-            // User is already logged in. Take him to main activity
-            text7=findViewById(R.id.textView7);
-            image18=findViewById(R.id.imagestar);
-            text7.setVisibility(View.VISIBLE);
-            selectColor = findViewById(R.id.selectColor);
-            selectColor.setVisibility(View.GONE);
-            image18.setVisibility(View.VISIBLE);
-            text7.setText(car.getRating()+".0");
-           addImage.setVisibility(View.GONE);
-           addthis_car.setVisibility(View.GONE);
-        }else{
-            session.setLogin(false);
-
-        }
         setData();
     }
 
@@ -173,18 +163,13 @@ public class EditCarActivity extends Activity {
             }
         });
 
-        List<String> BrandId = new ArrayList<String>();
-        BrandId.add(" ");
-        BrandId.add("20001");
-        BrandId.add("Car Rating");
-        BrandId.add("Car Brand");
-        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, BrandId);
-        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        loadProducts();
         brandid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Brand_Id=  brandid.getSelectedItem().toString();
-                Brand_Name = "Toyota";
+                String name  = brandid.getSelectedItem().toString();
+                Brand_Name =name.substring(name.indexOf("-")+1);
+                Brand_Id= name.substring(0,name.indexOf("-"));
             }
 
 
@@ -198,11 +183,10 @@ public class EditCarActivity extends Activity {
         });
         fueltype.setAdapter(dataAdapter);
         seatcap.setAdapter(dataAdapter2);
-        brandid.setAdapter(dataAdapter3);
+
     }
     private void setData(){
-        car_title.setEnabled(false);
-        car_title.setBackgroundResource(android.R.color.transparent);
+
         car_title.setText(car.getCar_Title());
         slideModels.add(new SlideModel(car.getVImage1()));
         slideModels.add(new SlideModel(car.getVImage2()));
@@ -213,43 +197,21 @@ public class EditCarActivity extends Activity {
         status.setText(car.getCar_Status());
         caroverview.setText(car.getCar_Overview());
         modelYear.setText(car.getModelYear()+"");
-        modelYear.setEnabled(false);
-        modelYear.setBackgroundResource(android.R.color.transparent);
+
         plate_not.setText(car.getPlate_no()+"");
-        plate_not.setEnabled(false);
-        plate_not.setBackgroundResource(android.R.color.transparent);
+
         location.setText(car.getLocation());
-        location.setEnabled(false);
-        location.setBackgroundResource(android.R.color.transparent);
-        priceDay.setText("RM"+car.getPricePerDay()+"/day");
-        priceDay.setEnabled(false);
-        priceDay.setBackgroundResource(android.R.color.transparent);
+
+        priceDay.setText(car.getPricePerDay()+"");
+
         caroverview.setText(car.getCar_Overview());
-        caroverview.setEnabled(false);
-        caroverview.setBackgroundResource(android.R.color.transparent);
+
         car_name.setText(car.getCar_Id()+"");
-        car_name.setEnabled(false);
-        car_name.setBackgroundResource(android.R.color.transparent);
 
+        linstatus.setVisibility(View.VISIBLE);
+        addthis_car.setVisibility(View.GONE);
+        savecar.setVisibility(View.VISIBLE);
 
-        List<String> fuelType = new ArrayList<String>();
-        fuelType.add(car.getFuel_Type());
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, fuelType);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fueltype.setEnabled(false);
-        List<String> seatCap = new ArrayList<String>();
-        seatCap.add(car.getSeating_Cap()+"");
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, seatCap);
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        seatcap.setEnabled(false);
-        List<String> BrandId = new ArrayList<String>();
-        BrandId.add(car.getBrand_Id()+"");
-        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, BrandId);
-        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        brandid.setEnabled(false);
-        fueltype.setAdapter(dataAdapter);
-        seatcap.setAdapter(dataAdapter2);
-        brandid.setAdapter(dataAdapter3);
     }
 
     private void getData(){
@@ -258,23 +220,19 @@ public class EditCarActivity extends Activity {
         String currentTime = sdf.format(dt);
 
 
-        Car_Id = generateID();
+        Car_Id = String.valueOf(car.getCar_Id());
         Car_Title = car_title.getText().toString();
         Car_Overview = caroverview.getText().toString();
         PricePerDay = priceDay.getText().toString();
         ModelYear = modelYear.getText().toString();
         RegDate = currentTime;
         UpdationDate = currentTime;
-        Car_Status = "Good";
-        Admin_Id = "1000001";
+        Car_Status = status.getText().toString();
         Location = location.getText().toString();
-        color ="123";
+        color = String.valueOf(colorCode);
         plate_no = plate_not.getText().toString();
-        rating="0";
+        rating=" ";
         reason =" ";
-        VImage1="";
-        VImage2="";
-        VImage3="";
 
         if(Integer.parseInt(ModelYear) > 2020){
             toast("Invalid Model Year");
@@ -286,7 +244,7 @@ public class EditCarActivity extends Activity {
             toast("Please select the brand ID");
         }
         else{
-            registerCar(Car_Id, Car_Title, Car_Overview, PricePerDay, Fuel_Type, ModelYear, Seating_Cap, VImage1, VImage2, VImage3, RegDate, UpdationDate, Car_Status, Admin_Id,
+            CarUpdate(Car_Id, Car_Title, Car_Overview, PricePerDay, Fuel_Type, ModelYear, Seating_Cap, UpdationDate, Car_Status,
                     Brand_Id, Brand_Name, Location, plate_no, String.valueOf(colorCode), rating, reason);
 
             for(int i =0 ; i < count ; i++){
@@ -303,24 +261,16 @@ public class EditCarActivity extends Activity {
                 Update.putExtra("ImageLocation", i);
                 Update.putExtra("Car_Id", Car_Id);
                 startActivity(Update);
+
             }
             finish();
         }
 
     }
-    private String generateID(){
-        Random rnd = new Random();
-        int id = 3000 + rnd.nextInt(65)*3;
-        String userid = String.valueOf(id);
-        return userid;
-    }
+
     private void listenHandler(){
         back.setOnClickListener(v-> finish());
-        addthis_car.setOnClickListener(view -> {
-            linstatus.setVisibility(View.VISIBLE);
-            addthis_car.setVisibility(View.GONE);
-        savecar.setVisibility(View.VISIBLE);}
-        );
+
         colorDisplay.setOnClickListener(v -> openColorDialog());
 
         addImage.setOnClickListener(view -> {
@@ -328,6 +278,8 @@ public class EditCarActivity extends Activity {
             startActivityForResult(i, IMAGE_PICKER_SELECT);
 
         });
+        savecar.setOnClickListener(v -> getData());
+
     }
     public void openColorDialog(){
         AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(this, colorCode, new AmbilWarnaDialog.OnAmbilWarnaListener() {
@@ -386,77 +338,103 @@ public class EditCarActivity extends Activity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
-    private void registerCar(final String Car_Id, final String  Car_Title, final String  Car_Overview, final String  PricePerDay, final String  Fuel_Type, final String  ModelYear, final String  Seating_Cap, final String  VImage1, final String  VImage2, final String  VImage3, final String  RegDate, final String  UpdationDate, final String  Car_Status, final String  Admin_Id, final String
-            Brand_Id, final String  Brand_Name, final String  Location, final String  plate_no, final String  color, final String  rating, final String  reason) {
-        // Tag used to cancel the request
-        String tag_string_req = "req_add";
 
-        StringRequest strReq = new StringRequest(Method.POST,
-                "http://192.168.1.3/android_login_api/addCar.php", response -> {
-
-
-            int jsonStart = response.indexOf("{");
-            int jsonEnd = response.lastIndexOf("}");
-
-            if (jsonStart >= 0 && jsonEnd >= 0 && jsonEnd > jsonStart) {
-                response = response.substring(jsonStart, jsonEnd + 1);
-            } else {
-                // deal with the absence of JSON content here
-            }
-
-            response = response.replaceAll("<.*?>", "");
-            try {
-                JSONObject jObj = new JSONObject(response);
-                boolean error = jObj.getBoolean("error");
-                if (!error) {
-
-                } else {
-
-
-                    String errorMsg = jObj.getString("error_msg");
-                    Toast.makeText(getApplicationContext(),
-                            errorMsg, Toast.LENGTH_LONG).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-
-            }
-
-        }, error -> {
-        }) {
+    public void CarUpdate(final String Car_Id, final String  Car_Title,
+                         final String  Car_Overview, final String  PricePerDay,
+                         final String  Fuel_Type, final String  ModelYear,
+                         final String  Seating_Cap, final String  UpdationDate,
+                         final String  Car_Status, final String
+            Brand_Id, final String  Brand_Name, final String  Location,
+                         final String  plate_no, final String  color,
+                         final String  rating, final String  reason) {
+        class CDClass extends AsyncTask<String, Void, String> {
 
             @Override
-            protected Map<String, String> getParams() {
-                // Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Car_Id", Car_Id);
-                params.put("Car_Title", Car_Title);
-                params.put("Car_Overview", Car_Overview);
-                params.put("PricePerDay",PricePerDay);
-                params.put("Fuel_Type", Fuel_Type);
-                params.put("ModelYear", ModelYear);
-                params.put("Seating_Cap", Seating_Cap);
-                params.put("VImage1", VImage1);
-                params.put("VImage2", VImage2);
-                params.put("VImage3", VImage3);
-                params.put("RegDate",  RegDate);
-                params.put("UpdationDate", UpdationDate);
-                params.put("Car_Status",Car_Status);
-                params.put("Admin_Id", Admin_Id);
-                params.put("Brand_Id", Brand_Id);
-                params.put("Brand_Name", Brand_Name);
-                params.put("Location", Location);
-                params.put("plate_no", plate_no);
-                params.put("color", color);
-                params.put("rating", rating);
-                params.put("reason", reason);
-                return params;
+            protected void onPreExecute() {
+                super.onPreExecute();
             }
 
-        };
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+                super.onPostExecute(httpResponseMsg);
 
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+            }
+            @Override
+            protected String doInBackground(String... params) {
+                hashMap.put("Car_Id", params[0]);
+                hashMap.put("Car_Title", params[1]);
+                hashMap.put("Car_Overview", params[2]);
+                hashMap.put("PricePerDay", params[3]);
+                hashMap.put("Fuel_Type", params[4]);
+                hashMap.put("ModelYear", params[5]);
+                hashMap.put("Seating_Cap", params[6]);
+                hashMap.put("UpdationDate", params[7]);
+                hashMap.put("Car_Status", params[8]);
+                hashMap.put("Brand_Id", params[9]);
+                hashMap.put("Brand_Name", params[10]);
+                hashMap.put("Location", params[11]);
+                hashMap.put("plate_no", params[12]);
+                hashMap.put("color", params[13]);
+                hashMap.put("rating", params[14]);
+                hashMap.put("reason", params[15]);
+                finalResult = httpParse.postRequest(hashMap, AppConfig.Url_updateCar);
+
+                return finalResult;
+            }
+        }
+        CDClass UpdateClass = new  CDClass();
+        UpdateClass.execute(Car_Id,Car_Title,Car_Overview,PricePerDay,Fuel_Type,
+                ModelYear,Seating_Cap,UpdationDate,Car_Status,Brand_Id,Brand_Name,Location,plate_no,color,rating,reason);
     }
 
+
+    private void loadProducts() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.Url_viewBrand,
+                response -> {
+                    try {
+
+                        JSONArray array = new JSONArray(response);
+                        list.clear();
+                        //traversing through all the object
+                        for (int i = 0; i < array.length(); i++) {
+                            //getting product object from json array
+                            JSONObject product = array.getJSONObject(i);
+                            //adding the product to product list
+                            list.add(new Brand(
+
+                                    product.getString("Brand_Id"),
+                                    product.getString("Brand_Name"),
+                                    product.getString("description"),
+                                    product.getString("brand_status"),
+                                    product.getString("reason"),
+                                    product.getString("Creation_Date"),
+                                    product.getString("Updated_Date"),
+                                    product.getString("Admin_Id")
+                            ));
+                        }
+                        newlist.clear();
+                        List<String> BrandId = new ArrayList<String>();
+
+                        for (int i = 0; i < list.size(); i++) {
+                            BrandId.add(list.get(i).getBrand_Id()+"-"+list.get(i).getBrand_Name());
+                        }
+
+                        ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, BrandId);
+                        dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        brandid.setAdapter(dataAdapter3);
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+
+                });
+
+
+        Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+
+    }
 
 }

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ez_rental.R;
+import com.example.ez_rental.app.AppConfig;
 import com.example.ez_rental.app.AppController;
 
 import org.json.JSONException;
@@ -130,7 +131,7 @@ public class AddCarDriverActivity extends AppCompatActivity {
         String tag_string_req = "req_add";
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                "http://192.168.1.3/android_login_api/addCD.php", response -> {
+                AppConfig.Url_addCd, response -> {
 
 
             int jsonStart = response.indexOf("{");

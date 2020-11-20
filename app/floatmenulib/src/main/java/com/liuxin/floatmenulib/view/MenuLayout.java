@@ -25,7 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import com.liuxin.floatmenulib.R;
 import com.liuxin.floatmenulib.utils.Utils;
 

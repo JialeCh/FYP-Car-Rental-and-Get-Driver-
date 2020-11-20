@@ -8,6 +8,8 @@ import android.util.Base64;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ez_rental.app.AppConfig;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -64,7 +66,7 @@ public class CarImageUploadActivity extends AppCompatActivity {
         ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
 
-        Url ="http://192.168.1.3/xx/carImageUpload.php";
+        Url = AppConfig.car_Image;
 
         UploadImageToServer();
         finish();

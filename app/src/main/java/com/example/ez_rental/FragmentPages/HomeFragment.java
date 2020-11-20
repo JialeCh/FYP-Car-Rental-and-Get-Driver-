@@ -26,11 +26,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ez_rental.Model.Reservation;
 import com.example.ez_rental.R;
+import com.example.ez_rental.activity.AdminMenu;
 import com.example.ez_rental.activity.Feedback.ViewFeedbackActivity;
 import com.example.ez_rental.activity.StartUp.ActivityLauncher;
 import com.example.ez_rental.activity.User.SendMail;
 import com.example.ez_rental.activity.User.UserViewActivity;
-import com.example.ez_rental.activity.car.AddCarActivity;
 import com.example.ez_rental.activity.helper.HttpParse;
 import com.example.ez_rental.activity.helper.SQLiteHelper;
 import com.example.ez_rental.activity.helper.SessionManager;
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Reservation> list = new ArrayList<>();
     private ArrayList<Reservation> newList = new ArrayList<>();
     private String image,name,id,email;
-    String HttpURL = "http://192.168.1.3/android_login_api/UpdateUser.php";
+
     boolean check = true;
     String finalResult;
     HashMap<String, String> hashMap = new HashMap<>();
@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment {
         }
         if(userrole.compareTo("user") == 0){
             init( view);
+            loadProducts();
         }
         else if(userrole.compareTo("admin") == 0){
             user_name = view.findViewById(R.id.user_name);
@@ -128,13 +129,12 @@ public class HomeFragment extends Fragment {
                                 Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
                                 positiveButton.setOnClickListener(x -> {
-                                    Intent AddVehiclePage = new Intent(getActivity(), AddCarActivity.class);
-                                    startActivity(AddVehiclePage);
+
                                     dialog.dismiss();
 
                                 });
                             }else if(userrole.compareTo("admin") == 0){
-                                Intent AddVehiclePage = new Intent(getActivity(), AddCarActivity.class);
+                                Intent AddVehiclePage = new Intent(getActivity(), AdminMenu.class);
                                 startActivity(AddVehiclePage);
                               }
                             else {
@@ -281,7 +281,7 @@ public class HomeFragment extends Fragment {
         user_name.setText(name);
         user_id.setText("User ID: "+id);
         Picasso.get().load( image).centerCrop().resize(100, 60).into(user_photo);
-        loadProducts();
+
 
     }
 
@@ -302,7 +302,7 @@ public class HomeFragment extends Fragment {
             protected String doInBackground(String... params) {
                 hashMap.put("User_ID", params[0]);
                 hashMap.put("User_Password", params[1]);
-                finalResult = httpParse.postRequest(hashMap, HttpURL);
+                finalResult = httpParse.postRequest(hashMap, AppConfig.Url_UpdateUser);
 
                 return finalResult;
             }
