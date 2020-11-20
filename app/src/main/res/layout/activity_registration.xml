@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activity.RegisterActivity">
+    tools:context=".activity.User.RegisterActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -229,16 +229,20 @@
                     app:layout_constraintStart_toStartOf="@+id/userlicenseText"
                     app:layout_constraintTop_toBottomOf="@+id/user_license_no" />
 
-                <EditText
+                <TextView
                     android:id="@+id/user_license_expiry"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/circular_grey_bordersolid"
+                    android:backgroundTint="@color/Transparent"
+                    android:drawableLeft="@drawable/calendar_icon"
                     android:ems="10"
                     android:inputType="date|datetime"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/user_license_no"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/user_license_no"
                     app:layout_constraintTop_toBottomOf="@+id/userlicenseexpiryText" />
 
@@ -257,6 +261,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
+                    android:drawableRight="@drawable/ic_eye"
                     android:ems="10"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
@@ -281,6 +286,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorSecondary"
+                    android:drawableRight="@drawable/ic_eye"
                     android:ems="10"
                     android:inputType="textPassword"
                     android:textColor="@color/black"

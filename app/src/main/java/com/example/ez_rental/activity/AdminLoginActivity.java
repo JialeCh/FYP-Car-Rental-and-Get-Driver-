@@ -8,19 +8,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.ez_rental.ActivityPages.AdminViewActivity;
 import com.example.ez_rental.R;
+import com.example.ez_rental.activity.User.GuestViewActivity;
+import com.example.ez_rental.activity.User.RegisterActivity;
+import com.example.ez_rental.activity.helper.SQLiteHelper;
+import com.example.ez_rental.activity.helper.SessionManager;
 import com.example.ez_rental.app.AppConfig;
 import com.example.ez_rental.app.AppController;
-import com.example.ez_rental.helper.SQLiteHelper;
-import com.example.ez_rental.helper.SessionManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,10 +36,12 @@ public class AdminLoginActivity extends Activity {
     private EditText password;
     private ProgressDialog pDialog;
     private SessionManager session;
+    private SessionManager session2;
     private SQLiteHelper db;
     private TextView register;
 
     private Button login;
+    private ImageView back;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,18 +58,19 @@ public class AdminLoginActivity extends Activity {
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+        back = findViewById(R.id.btnbackk2);
+        back.setOnClickListener(v -> finish());
 
         // SQLite database handler
         db = new SQLiteHelper(getApplicationContext());
 
         // Session manager
+
+
+
+
         session = new SessionManager(getApplicationContext());
-
-
-        if (session.isLoggedIn()) {
-            session.setLogin(false);
-            db.deleteUsers();
-        }
+        session.setLogin(false);
 
         // Login button Click Event
         login.setOnClickListener(view -> {
@@ -120,14 +124,9 @@ public class AdminLoginActivity extends Activity {
 
                     boolean error = jObj.getBoolean("error");
 
-                    // Check for error node in json
-                    if (!error) {
-                        // user successfully logged in
-                        // Create login session
-                        session.setLogin(true);
 
-                        // Now store the user in SQ
-                        // Lite
+                    if (!error) {
+
                         JSONObject admin = jObj.getJSONObject("admin");
                         String Admin_Id = admin.getString("Admin_Id");
                         String Admin_Name = admin.getString("Admin_Name");
@@ -136,15 +135,13 @@ public class AdminLoginActivity extends Activity {
                         String Admin_ContactNo = admin.getString("Admin_ContactNo");
                         String Admin_BOD = admin.getString("Admin_BOD");
                         String Admin_Password = admin.getString("Admin_Password");
+                        String Address = admin.getString("Address");
                         String Admin_Status = admin.getString("Admin_Status");
                         String Updated_Date = admin.getString("Updated_Date");
-
-                        // Inserting row in users table
-                       /* db.addAdmin(Admin_Id,Admin_Name, Username, Admin_Email, Admin_ContactNo,Admin_BOD,Admin_Password,Admin_Status,Updated_Date);*/
-
-
-                        // Launch main activity
-                        Intent intent = new Intent(AdminLoginActivity.this, AdminViewActivity.class);
+                        session.setLogin(true);
+                        db.deleteAdmin();
+                        db.addAdmin(Admin_Id,Admin_Name, Username, Admin_Email, Admin_ContactNo, Admin_BOD, Admin_Password, Address,Admin_Status,Updated_Date);
+                        Intent intent = new Intent(AdminLoginActivity.this, GuestViewActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -161,15 +158,11 @@ public class AdminLoginActivity extends Activity {
                 }
 
             }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
-            }
+        }, error -> {
+            Log.e(TAG, "Login Error: " + error.getMessage());
+            Toast.makeText(getApplicationContext(),
+                    error.getMessage(), Toast.LENGTH_LONG).show();
+            hideDialog();
         }) {
 
             @Override
@@ -183,8 +176,6 @@ public class AdminLoginActivity extends Activity {
             }
 
         };
-
-        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 

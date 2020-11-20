@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:backgroundTint="@color/circle_color_default_gray"
-    tools:context=".ActivityPages.CarInfoActivity">
+    android:backgroundTint="@color/lightblack"
+    tools:context=".activity.Reservation.ViewReservationActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Reservation Details"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Reservation ID: 1234"
-                    android:textColor="@color/goodgrey"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/bookingCompleteText"
                     app:layout_constraintStart_toStartOf="@+id/bookingCompleteText"
@@ -56,7 +56,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/ic_arrow_back_24dp"
+                    android:background="@drawable/ic_arrow_back"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -562,17 +562,17 @@
 
                 <ImageView
                     android:id="@+id/btnCancel"
-                    android:layout_width="28dp"
-                    android:layout_height="26dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/Transparent"
-                    android:backgroundTint="@color/alert"
+                    android:background="@color/lightblack"
+                    android:backgroundTint="@color/Transparent"
                     android:contextClickable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.707"
                     app:layout_constraintStart_toEndOf="@+id/bookingCompleteText"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cancel" />
+                    app:srcCompat="@drawable/ic_clear" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

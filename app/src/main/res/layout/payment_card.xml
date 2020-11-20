@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    >
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -17,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/round_card"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +24,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/card"
-            android:layout_width="340dp"
+            android:layout_width="346dp"
             android:layout_height="122dp"
             android:layout_gravity="center"
             android:background="@drawable/circularbordersolid"
-            android:backgroundTint="@color/test3"
+            android:backgroundTint="@color/white"
             android:foregroundGravity="center">
 
             <TextView
@@ -40,8 +39,8 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_black"
                 android:text="Payment ID"
-                android:textColor="@color/statusBarColor"
-                android:textSize="14sp"
+                android:textColor="@color/lightblack"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,11 +50,11 @@
                 android:layout_width="157dp"
                 android:layout_height="34dp"
                 android:background="@drawable/select_button"
-                android:backgroundTint="@color/alert"
+                android:backgroundTint="@color/lightblack"
                 android:fontFamily="@font/roboto"
                 android:text="Details"
                 android:textAllCaps="false"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:text="RM :"
-                android:textColor="@android:color/black"
+                android:textColor="@color/lightblack"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/book"
                 app:layout_constraintStart_toStartOf="@+id/payment_id"
@@ -79,8 +78,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
                 android:text="Payment Date:"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textColor="@color/lightblack"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/payment_id"
                 app:layout_constraintTop_toBottomOf="@+id/payment_id" />
 

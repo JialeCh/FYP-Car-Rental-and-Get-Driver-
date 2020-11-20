@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ez_rental.Model.Reservation;
 import com.example.ez_rental.R;
-import com.example.ez_rental.helper.SQLiteHelper;
+import com.example.ez_rental.activity.helper.SQLiteHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapter.ReservationsViewHolder> implements Filterable {
@@ -99,6 +101,19 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
         ReservationListfull =  new ArrayList<>(ReservationList);
     }
 
+    public void sortNameByAsc() {
+        Comparator<Reservation> comparator = new Comparator<Reservation>() {
+
+            @Override
+            public int compare(Reservation object1, Reservation object2) {
+                return object2.getReserve_Date().compareToIgnoreCase(object1.getReserve_Date());
+            }
+        };
+        Collections.sort(ReservationList, comparator);
+        notifyDataSetChanged();
+
+    }
+
 
 
     @Override
@@ -108,7 +123,7 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
         holder.vehicleName.setText(Reservations.getCar_Name()+ " ( Car ID: "+ Reservations.getCar_Id()+" )");
         holder.bookingID.setText(Reservations.getReserve_ID()+ " ");
         holder.customerName.setText(Reservations.getUser_ID() + " ");
-        holder.pickupDate.setText(Reservations.getReserve_Date() + " ");
+        holder.pickupDate.setText(Reservations.getRent_Date() + " ");
         holder.returnDate.setText(Reservations.getReturn_Date() + " ");
         holder.ReservationStatus.setText(Reservations.getStatus() + " ");
 

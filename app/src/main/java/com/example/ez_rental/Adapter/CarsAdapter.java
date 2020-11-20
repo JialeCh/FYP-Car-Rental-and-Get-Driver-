@@ -100,6 +100,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsViewHolder
         this.mCtx = mCtx;
         this.CarsList = carsList;
         CarsListfull = new ArrayList<>(CarsList);
+        notifyDataSetChanged();
     }
 
     public void sortNameByAsc() {
@@ -114,13 +115,80 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsViewHolder
         notifyDataSetChanged();
 
     }
+    public void sortNameByDesc() {
+        Comparator<Car> comparator = new Comparator<Car>() {
+
+            @Override
+            public int compare(Car object1, Car object2) {
+                return object2.getCar_Title().compareToIgnoreCase(object1.getCar_Title());
+            }
+        };
+        Collections.sort(CarsList, comparator);
+        notifyDataSetChanged();
+
+    }
+
+    public void sortBrandByAsc() {
+        Comparator<Car> comparator = new Comparator<Car>() {
+
+            @Override
+            public int compare(Car object1, Car object2) {
+                return object1.getBrand_Name().compareToIgnoreCase(object2.getBrand_Name());
+            }
+        };
+        Collections.sort(CarsList, comparator);
+        notifyDataSetChanged();
+
+    }
+    public void sortBrandByDesc() {
+        Comparator<Car> comparator = new Comparator<Car>() {
+
+            @Override
+            public int compare(Car object1, Car object2) {
+                return object2.getBrand_Name().compareToIgnoreCase(object1.getBrand_Name());
+            }
+        };
+        Collections.sort(CarsList, comparator);
+        notifyDataSetChanged();
+
+    }
+
+    public void sortRateByAsc() {
+        Comparator<Car> comparator = new Comparator<Car>() {
+
+            @Override
+            public int compare(Car object1, Car object2) {
+                return object1.getRating()-object2.getRating();
+            }
+        };
+        Collections.sort(CarsList, comparator);
+        notifyDataSetChanged();
+
+    }
+    public void sortRateByDesc() {
+        Comparator<Car> comparator = new Comparator<Car>() {
+
+            @Override
+            public int compare(Car object1, Car object2) {
+                return object2.getRating()-object1.getRating();
+            }
+        };
+        Collections.sort(CarsList, comparator);
+        notifyDataSetChanged();
+
+    }
     @Override
     public void onBindViewHolder(CarsViewHolder holder, int position) {
         Car Cars =  CarsList.get(position);
         holder.rate.setText(String.valueOf(Cars.getRating()));
         holder.vehicle.setText(Cars.getCar_Title() + "( "+ Cars.getBrand_Name() +" )");
         holder.price.setText("RM "+Cars.getPricePerDay()+"/day");
-        Picasso.get().load(Cars.getVImage1()).into(holder.vehicleImage);
+        if(Cars.getVImage1().compareTo("")==0){
+
+        }else{
+            Picasso.get().load(Cars.getVImage1()).into(holder.vehicleImage);
+        }
+
         if (Cars.getCar_Status().contains("Good")){
             holder.btnStatus.setText("Available");
         }

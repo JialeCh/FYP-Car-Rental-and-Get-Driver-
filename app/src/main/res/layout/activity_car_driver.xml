@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.Reservation.CarInfoActivity"
+    >
+
+    <TextView
+        android:id="@+id/vehicleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Add Driver"
+        android:textColor="@color/colorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_arrow_back_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicleTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/vehicleSpecCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/personalinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <!--About Me Card-->
+
+                    <!--Contact Details-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/proximanovaregular"
+                                android:text="Driver Details"
+                                android:textColor="@color/colorSecondary"
+                                android:textColorLink="@color/alert"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <ImageView
+                                    android:layout_width="183dp"
+                                    android:layout_height="137dp"
+                                    android:padding="10dp"
+                                    android:text="Brand ID"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert"
+                                    app:srcCompat="@drawable/ic_license" />
+
+                                <TextView
+                                    android:id="@+id/cd_id"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Driver Name"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/brandname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="78dp"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Gender"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <RadioGroup
+                                    android:id="@+id/bdesc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp">
+
+                                    <RadioButton
+                                        android:id="@+id/radioButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Male" />
+
+                                    <RadioButton
+                                        android:id="@+id/radioButton2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Female" />
+                                </RadioGroup>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Birth Date"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <TextView
+                                    android:id="@+id/birthdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Phone No"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/phone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:inputType="phone"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Language Speak"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/language"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="License No"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/cdlicense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:inputType="number"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="License Expiry Date"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <TextView
+                                    android:id="@+id/expirydate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Status"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@color/Transparent"
+                                    android:enabled="false"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:text="Available"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp"/>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
+                    app:layout_constraintStart_toStartOf="@+id/vehicleSpecCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleSpecCard"/>
+
+                <Button
+                    android:id="@+id/addbrand"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/buttonSize"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_button"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Add Driver"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

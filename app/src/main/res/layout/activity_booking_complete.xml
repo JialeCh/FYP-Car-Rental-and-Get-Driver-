@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.CarInfoActivity">
+    tools:context=".activity.Reservation.CarInfoActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/vehicle_info_card"
-                        android:backgroundTint="#24F577"
+                        android:backgroundTint="@color/alert"
                         android:paddingBottom="10dp">
 
                         <ImageView

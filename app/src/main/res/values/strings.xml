@@ -8,10 +8,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Search">Search....</string>
 
-
+    <string name="ChangePass">Change Password  </string>
     <string name="rate_us">Rate us</string>
     <string name="love_this_app">Love</string>
     <string name="first_msg">Your rating will help us to do better.</string>
+
 
     <string name="no_email_client">There are no email clients installed.</string>
     <string name="google_maps_api">AIzaSyBp177haOt7JcE7JvaIfnscOa7cMb7ql_o</string>

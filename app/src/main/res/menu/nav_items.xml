@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <item
         android:id="@+id/nav_payment"
@@ -11,9 +13,15 @@
         android:title="Reservation" />
 
     <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+
+        android:title="Home" />
+
+    <item
         android:id="@+id/nav_search"
-        android:icon="@drawable/search_icon"
-        android:title="Search" />
+        android:icon="@drawable/vehicle_icon"
+        android:title="Car" />
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/profile_icon"

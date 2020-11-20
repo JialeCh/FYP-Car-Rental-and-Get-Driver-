@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    >
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
@@ -37,7 +36,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito_black"
                 android:text="Car Name"
-                android:textColor="@color/statusBarColor"
+                android:textColor="@color/lightblack"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Car Details"
-                android:textColor="@color/goodgrey"
+                android:textColor="@color/lightblack"
                 android:textSize="14sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/book"
@@ -76,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
                 android:text="RM75/day"
-                android:textColor="@color/black"
+                android:textColor="@color/lightblack"
                 android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="@+id/vehicle"
                 app:layout_constraintTop_toBottomOf="@+id/vehicle" />

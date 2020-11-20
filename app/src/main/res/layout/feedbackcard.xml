@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_card"
+        app:cardBackgroundColor="@color/Transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card"
+            android:layout_width="340dp"
+            android:layout_height="163dp"
+            android:background="@drawable/circular_grey_bordersolid"
+            android:backgroundTint="@color/white">
+
+            <TextView
+                android:id="@+id/feedbackID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_black"
+                android:text="Feedback ID"
+                android:textColor="@color/lightblack"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/book"
+                android:layout_width="152dp"
+                android:layout_height="35dp"
+                android:background="@drawable/select_button"
+                android:backgroundTint="@color/quantum_deeporange"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Reserve ID:"
+                android:textAllCaps="false"
+                android:textColor="@color/lightblack"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/FeedbackTxtx"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Feedback Date"
+                android:textColor="@color/quantum_cyan"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/book"
+                app:layout_constraintStart_toStartOf="@+id/feedbackID"
+                app:layout_constraintTop_toTopOf="@+id/book" />
+
+            <TextView
+                android:id="@+id/user_Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="User ID :"
+                android:textColor="@color/lightblack"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@+id/feedbackID"
+                app:layout_constraintTop_toBottomOf="@+id/feedbackID" />
+
+            <TextView
+                android:id="@+id/FeedbackTxtx"
+                android:layout_width="291dp"
+                android:layout_height="63dp"
+                android:backgroundTint="#FFFFFF"
+                android:text="xxxxxxxxxxxxxxxxxxxxxxxxxx"
+                android:textColor="@color/lightblack"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/user_Id"
+                app:layout_constraintTop_toBottomOf="@+id/user_Id" />
+
+            <ImageView
+                android:id="@+id/feebbackImg"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/FeedbackTxtx"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/rateCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="25dp"
+                android:text="00.0"
+                android:textColor="@color/alert"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/FeedbackTxtx"
+                app:layout_constraintStart_toEndOf="@+id/feebbackImg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

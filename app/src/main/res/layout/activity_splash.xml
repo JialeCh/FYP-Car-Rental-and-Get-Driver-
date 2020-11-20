@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splash_gradient"
-    tools:context=".ActivityPages.ActivitySplash">
+    android:background="@color/lightblack"
+    tools:context=".activity.StartUp.ActivitySplash">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,17 +23,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Progressing...."
+            android:text="Welcome"
             android:textColor="@color/lightgrey"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
         <ProgressBar
             android:id="@+id/splashProgress"
             style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="50dp"
+            android:progressTint="@color/white" />
 
     </LinearLayout>
 

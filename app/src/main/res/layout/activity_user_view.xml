@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutC"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ActivityPages.UserViewActivity">
+    android:background="@drawable/bg_gra"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.User.UserViewActivity">
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:clickable="true"
+        android:soundEffectsEnabled="true"
+        android:tint="@color/white"
+        app:backgroundTint="@android:color/transparent"
+        app:fabSize="auto"
+        app:rippleColor="@color/white"
+        app:srcCompat="@drawable/ic_add" />
 
     <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="#292637"
+        android:background="@color/colorSecondary"
         android:elevation="2dp"
         app:abb_animationDuration="600"
         app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
@@ -24,22 +46,21 @@
         app:abb_tabAnimation="slide"
         app:abb_tabColor="#CCFFFFFF"
         app:abb_tabColorSelected="@color/yellow"
-        app:abb_tabs="@menu/nav_items" >
+        app:abb_tabs="@menu/nav_items">
 
     </nl.joery.animatedbottombar.AnimatedBottomBar>
 
-
-
     <FrameLayout
         android:id="@+id/framelayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="411dp"
+        android:layout_height="581dp"
         android:layout_above="@+id/bottom_nav"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="-3dp">
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="-43dp">
 
 
     </FrameLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.CarInfoActivity">
+    tools:context=".activity.Reservation.CarInfoActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -434,7 +434,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
-                                    android:text="$0/Day"
+                                    android:text="RM0/Day"
                                     android:textColor="@color/goodgrey"
                                     android:textSize="12sp" />
                             </LinearLayout>
@@ -503,7 +503,7 @@
                                     android:layout_height="40dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/round_button"
-                                    android:backgroundTint="#24F577"
+                                    android:backgroundTint="@color/alert"
                                     android:fontFamily="@font/roboto_bold"
                                     android:text="Pay Now"
                                     android:textColor="@color/white" />
@@ -543,7 +543,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#24F577"
+        android:background="@drawable/bg_gra"
         android:padding="15dp"
         app:SpinKit_Color="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

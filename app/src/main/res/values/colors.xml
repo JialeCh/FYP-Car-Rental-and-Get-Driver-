@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#EEEEEE</color>
-    <color name="colorSecondary">#292637</color>
+    <color name="colorSecondary">#272727</color>
     <color name="colorAccent">#03A9F4</color>
     <color name="statusBarColor">#292637</color>
     <color name="white">#FFFFFF</color>
@@ -25,5 +25,18 @@
     <color name="gray">#4B0F0F0F</color>
     <color name="test3">#FFF6AF</color>
     <color name="test4">#54FFFF00</color>
+
+    <color name="divider_color">#309E9EA0</color>
+    <color name="window_background">#FFFFFF</color>
+
+    <color name="translucent_color">#80000000</color>
+
+    <color name="lightblack">#272727</color>
+    <color name="selected_color">#FC3236</color>
+    <color name="tabSelectedTextColor">#FD3235</color>
+    <color name="tabTextColor">#5B5B5B</color>
+    <color name="blackBlue">#090022</color>
+    <color name="test5">#36C8F4</color>
+    <color name="dd">#1443A3</color>
 
 </resources>

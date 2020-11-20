@@ -5,321 +5,585 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.AddVehicleCategoryActivity">
+    tools:context=".activity.Reservation.CarInfoActivity"
+    >
+
+    <TextView
+        android:id="@+id/vehicleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Add Car"
+        android:textColor="@color/colorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_arrow_back_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/vehicleTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/welcome_to_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="56dp"
-                    android:text="Add Vehicle "
-                    android:textColor="@color/colorSecondary"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/nunito"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/categoryText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Category"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/welcome_to_title" />
-
-                <EditText
-                    android:id="@+id/category"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/categoryText" />
-
-                <TextView
-                    android:id="@+id/seatsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Seats"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/categoryText"
-                    app:layout_constraintTop_toBottomOf="@+id/category" />
-
-                <EditText
-                    android:id="@+id/seats"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/category"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/seatsText" />
-
-                <TextView
-                    android:id="@+id/priceText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Price"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/categoryText"
-                    app:layout_constraintTop_toBottomOf="@+id/seats" />
-
-                <EditText
-                    android:id="@+id/price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/category"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/priceText" />
-
-                <TextView
-                    android:id="@+id/mileageText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Mileage"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/categoryText"
-                    app:layout_constraintTop_toBottomOf="@+id/price" />
-
-                <EditText
-                    android:id="@+id/mileage"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/price"
-                    app:layout_constraintStart_toStartOf="@+id/price"
-                    app:layout_constraintTop_toBottomOf="@+id/mileageText" />
-
-                <TextView
-                    android:id="@+id/manufacturerText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Manufacturer"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/mileageText"
-                    app:layout_constraintTop_toBottomOf="@+id/mileage" />
-
-                <EditText
-                    android:id="@+id/manufacturer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/category"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
-
-                <TextView
-                    android:id="@+id/modelText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Model"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/mileageText"
-                    app:layout_constraintTop_toBottomOf="@+id/manufacturer" />
-
-                <EditText
-                    android:id="@+id/model"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/category"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/modelText" />
-
-                <TextView
-                    android:id="@+id/yearText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Year"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/mileageText"
-                    app:layout_constraintTop_toBottomOf="@+id/model" />
-
-                <EditText
-                    android:id="@+id/year"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/category"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/category"
-                    app:layout_constraintTop_toBottomOf="@+id/yearText" />
-
-                <TextView
-                    android:id="@+id/imageURLText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Image URL"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/yearText"
-                    app:layout_constraintTop_toBottomOf="@+id/year" />
-
-                <EditText
-                    android:id="@+id/imageURL"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorSecondary"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/year"
-                    app:layout_constraintStart_toStartOf="@+id/year"
-                    app:layout_constraintTop_toBottomOf="@+id/imageURLText" />
-
-                <Button
-                    android:id="@+id/add"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/buttonSize"
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/vehicleImage"
+                    android:layout_width="360dp"
+                    android:layout_height="163dp"
                     android:layout_marginTop="24dp"
-                    android:background="@drawable/round_button"
-                    android:text="Add"
-                    app:layout_constraintEnd_toEndOf="@+id/year"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/year"
-                    app:layout_constraintTop_toBottomOf="@+id/load" />
+                    app:auto_cycle="true"
+                    app:corner_radius="20"
+                    app:delay="0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:period="2000"
+                    app:placeholder="@drawable/ic_fab_background" />
 
                 <Button
-                    android:id="@+id/reset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="32dp"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="#D50000"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="Reset"
-                    app:layout_constraintEnd_toEndOf="@+id/add"
-                    app:layout_constraintStart_toStartOf="@+id/add"
-                    app:layout_constraintTop_toBottomOf="@+id/add" />
+                    android:id="@+id/addImage"
+                    android:layout_width="70dp"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/circular_grey_bordersolid"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/roboto_medium"
+                    android:padding="6dp"
+                    android:text="add Image"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/notAvailable"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleImage" />
 
-                <Button
-                    android:id="@+id/vehicleCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/round_card"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="Add Vehicle Category"
-                    app:layout_constraintEnd_toEndOf="@+id/reset"
-                    app:layout_constraintHorizontal_bias="0.471"
-                    app:layout_constraintStart_toStartOf="@+id/reset"
-                    app:layout_constraintTop_toBottomOf="@+id/reset" />
-
-                <CheckBox
-                    android:id="@+id/availability"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notAvailable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/addImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/addImage"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/addImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/addImage"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/vehicleSpecCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
-                    android:buttonTint="@color/colorSecondary"
-                    android:text="Available"
-                    android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/imageURL"
-                    app:layout_constraintTop_toBottomOf="@+id/imageURL" />
+                    android:layout_marginEnd="24dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addImage">
+
+                    <LinearLayout
+                        android:id="@+id/personalinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+
+                    <!--About Me Card-->
+
+                    <!--Contact Details-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circularbordersolid"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/proximanovaregular"
+                                android:text="Car Specification"
+                                android:textColor="@color/colorSecondary"
+                                android:textColorLink="@color/alert"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Car ID"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/car_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Car Title"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/car_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Car Overview"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/caroverview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Price(Rm)"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/priceDay"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="/day"
+                                    android:inputType="numberDecimal"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Fuel Type"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <Spinner
+                                    android:id="@+id/fueltype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:spinnerMode="dropdown"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Model Year"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/modelYear"
+                                    android:layout_width="65dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:inputType="number"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Seating"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <Spinner
+                                    android:id="@+id/seatcap"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:dropDownWidth="50dp"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Brand ID"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <Spinner
+                                    android:id="@+id/brandid"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Location"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/location"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Plate No"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/plate_no"
+                                    android:layout_width="80dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp">
+
+                                <Button
+                                    android:id="@+id/colorDisplay"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@drawable/round_card"
+                                    android:backgroundTint="@color/colorSecondary" />
+
+                                <TextView
+                                    android:id="@+id/selectColor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:drawableLeft="@drawable/ic_arrow_back_24dp"
+                                    android:text="Select Color"
+                                    android:textColor="@color/colorSecondary"
+                                    app:layout_constraintBottom_toBottomOf="@+id/colorDisplay"
+                                    app:layout_constraintStart_toEndOf="@+id/colorDisplay"
+                                    app:layout_constraintTop_toTopOf="@+id/colorDisplay" />
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:paddingRight="8dp"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="110dp"
+                                    android:layout_height="40dp"
+                                    android:padding="10dp"
+                                    android:text="Status"
+                                    android:textColor="@color/colorSecondary"
+                                    android:textColorLink="@color/alert" />
+
+                                <EditText
+                                    android:id="@+id/status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@color/Transparent"
+                                    android:enabled="false"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:text="Available"
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
+                    app:layout_constraintStart_toStartOf="@+id/vehicleSpecCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleSpecCard"/>
 
                 <Button
-                    android:id="@+id/viewResult"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/addthis_car"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="32dp"
-                    android:background="@drawable/round_card"
-                    android:backgroundTint="#64DD17"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="View Result"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_button"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Add Car"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/vehicleCategory"
-                    app:layout_constraintStart_toStartOf="@+id/vehicleCategory"
-                    app:layout_constraintTop_toBottomOf="@+id/vehicleCategory" />
-
-                <ImageView
-                    android:id="@+id/viewVehicle"
-                    android:layout_width="0dp"
-                    android:layout_height="235dp"
-                    android:layout_marginTop="24dp"
-                    android:background="#FFFFFF"
-                    app:layout_constraintEnd_toEndOf="@+id/imageURL"
-                    app:layout_constraintStart_toStartOf="@+id/imageURL"
-                    app:layout_constraintTop_toBottomOf="@+id/availability" />
+                    app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
                 <Button
-                    android:id="@+id/load"
-                    android:layout_width="87dp"
+                    android:id="@+id/savecar"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
-                    android:text="Load"
-                    app:layout_constraintStart_toStartOf="@+id/viewVehicle"
-                    app:layout_constraintTop_toBottomOf="@+id/viewVehicle" />
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imagestar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_star"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/vehicleTitle"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toEndOf="@+id/vehicleTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/ic_star" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imagestar"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imagestar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

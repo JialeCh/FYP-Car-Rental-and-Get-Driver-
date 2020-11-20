@@ -6,9 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -16,12 +22,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ez_rental.ActivityPages.ViewBookingActivity;
 import com.example.ez_rental.Adapter.ReservationsAdapter;
 import com.example.ez_rental.Model.Reservation;
 import com.example.ez_rental.R;
+import com.example.ez_rental.activity.Reservation.ViewReservationActivity;
+import com.example.ez_rental.activity.User.UserViewActivity;
+import com.example.ez_rental.activity.helper.SQLiteHelper;
+import com.example.ez_rental.activity.helper.SessionManager;
 import com.example.ez_rental.app.AppConfig;
-import com.example.ez_rental.helper.SQLiteHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +46,11 @@ public class ReservationFragment extends Fragment implements ReservationsAdapter
     private ArrayList<Reservation> newList = new ArrayList<>();
     SwipeRefreshLayout swipeRefreshLayout;
     private ReservationsAdapter adapter;
+    private SessionManager session;
     String user_Email = " ";
+    ConstraintLayout layout;
+    boolean check = true;
+    String userrole="";
     public ReservationFragment() {
     }
     @Override
@@ -51,25 +63,70 @@ public class ReservationFragment extends Fragment implements ReservationsAdapter
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        session = new SessionManager(getContext());
         db = new SQLiteHelper(getContext());
         HashMap<String, String> user = db.getUserDetails();
+        HashMap<String, String> admin = db.getAdminDetails();
 
-        if (user != null) {
-            user_Email = user.get("User_ID");
+        if(user.get("User_ID")!= null) {
+            userrole = "user";
+        }else if(admin.get("Admin_Id") != null){
+            userrole = "admin";
+        }else
+        {
+            userrole = "guest";
         }
-        adapter=loadProducts(view,user_Email);
-        swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            adapter=loadProducts(view,user_Email);
-            adapter.notifyDataSetChanged();
-            swipeRefreshLayout.setRefreshing(false);
+        layout = view.findViewById(R.id.layout);
+        layout.setOnClickListener(v -> {
+            if (check) {
+                UserViewActivity.hideBottomNav();
+                check = false;
+            }else{
+                UserViewActivity.showBottomNav();
+                check=true;
+            }
         });
+        if(userrole.contains("user")) {
 
-        swipeRefreshLayout.setColorScheme(android.R.color.background_dark,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-        setHasOptionsMenu(true);
+            view.setOnClickListener(v -> UserViewActivity.hideBottomNav());
+            if (user != null) {
+                user_Email = user.get("User_ID");
+            }
+            adapter = loadProducts(view, user_Email);
+            adapter.sortNameByAsc();
+            swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+            swipeRefreshLayout.setOnRefreshListener(() -> {
+
+                adapter = loadProducts(view, user_Email);
+                adapter.sortNameByAsc();
+                adapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            });
+
+            swipeRefreshLayout.setColorScheme(android.R.color.background_dark,
+                    android.R.color.holo_green_light,
+                    android.R.color.holo_orange_light,
+                    android.R.color.holo_red_light);
+            setHasOptionsMenu(true);
+
+        }else
+        {
+            final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.AlertDialogCustom))
+                    .setTitle("Warning")
+                    .setMessage("You are not login as user")
+                    .setPositiveButton("Ok", null)
+                    .setIcon(getResources().getDrawable(R.drawable.ic_warning2))
+                    .show();
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(x -> {
+                dialog.dismiss();
+                HomeFragment fragment1 = new  HomeFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, fragment1);
+                fragmentTransaction.commit();
+            });
+        }
         return view;
     }
     private ReservationsAdapter loadProducts(View view,String user_Email) {
@@ -116,6 +173,7 @@ public class ReservationFragment extends Fragment implements ReservationsAdapter
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ReservationsAdapter(newList,getContext(), this);
+        adapter.sortNameByAsc();
         recyclerView.setAdapter(adapter);
 
         Volley.newRequestQueue(getContext()).add(stringRequest);
@@ -125,11 +183,11 @@ public class ReservationFragment extends Fragment implements ReservationsAdapter
     @Override
     public void onClick(int position) {
 
-        Intent CarInfoPage = new Intent(getActivity(), ViewBookingActivity.class);
-        CarInfoPage.putExtra("Reservation", newList.get(position));
-
-        startActivity(CarInfoPage);
+        Intent ReservationInfoPage = new Intent(getActivity(), ViewReservationActivity.class);
+        ReservationInfoPage.putExtra("Reservation", newList.get(position));
+        startActivity(ReservationInfoPage);
 
     }
+
 
 }

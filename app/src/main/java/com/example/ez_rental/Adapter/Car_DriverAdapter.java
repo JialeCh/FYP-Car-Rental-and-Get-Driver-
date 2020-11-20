@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ez_rental.Model.Car_Driver;
 import com.example.ez_rental.R;
-import com.example.ez_rental.helper.GetCarDriverDialog;
 
 import java.util.ArrayList;
 
@@ -24,17 +23,12 @@ public class Car_DriverAdapter extends RecyclerView.Adapter<Car_DriverAdapter.Ca
 
 
     private Car_DriverAdapter.onCar_DriverListener onCar_DriverListener;
-    private GetCarDriverDialog getCarDriverDialog;
+
     private Context mCtx;
     private ArrayList<Car_Driver> ReservationList;
     private ArrayList<Car_Driver> ReservationListfull;
 
-    public Car_DriverAdapter(ArrayList<Car_Driver> list, Context context, GetCarDriverDialog getCarDriverDialog) {
-        this.getCarDriverDialog = getCarDriverDialog;
-        this.mCtx = context;
-        this.ReservationList = list;
-        ReservationListfull = new ArrayList<>(ReservationList);
-    }
+
 
 
     class Car_DriverViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{

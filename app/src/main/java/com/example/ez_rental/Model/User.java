@@ -6,14 +6,15 @@ public class User  implements Serializable {
     private String User_ID;
     private String Username ;
     private String User_Email;
-    private String User_Password;
+
     private String User_ContactNo ;
     private String Address;
+    private String User_Password;
     private String User_Profile;
     private String Driver_license;
     private String License_ExpiryDate;
 
-    public User(String user_ID, String username, String user_Email, String user_Password, String user_ContactNo, String address, String user_Profile, String driver_license, String license_ExpiryDate) {
+    public User(String user_ID, String username, String user_Email, String user_ContactNo, String address, String user_Password, String user_Profile, String driver_license, String license_ExpiryDate) {
         User_ID = user_ID;
         Username = username;
         User_Email = user_Email;

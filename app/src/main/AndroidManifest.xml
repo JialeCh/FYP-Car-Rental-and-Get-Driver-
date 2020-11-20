@@ -25,45 +25,68 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.example.ez_rental.ActivityPages.ViewBookingActivity"
+        <activity android:name="com.example.ez_rental.activity.Reservation.ViewReservationActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name="com.example.ez_rental.ActivityPages.BookingCompleteActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.BookingSummaryActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.CarInfoActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.UserViewActivity"
+        <activity android:name="com.example.ez_rental.activity.Reservation.ReservationCompleteActivity" />
+        <activity android:name="com.example.ez_rental.activity.Reservation.ReservationSummaryActivity" />
+        <activity android:name="com.example.ez_rental.activity.Reservation.CarInfoActivity" />
+        <activity android:name="com.example.ez_rental.activity.Payment.ViewTransactionActivity" />
+        <activity android:name="com.example.ez_rental.activity.Feedback.ViewFeedbackActivity" />
+        <activity android:name="com.example.ez_rental.activity.brand.addBrand" />
+        <activity android:name="com.example.ez_rental.activity.brand.ViewBrandActivity" />
+        <activity android:name="com.example.ez_rental.activity.brand.EditBrand" />
+        <activity android:name="com.example.ez_rental.activity.User.UserViewActivity"
+            android:theme="@style/AppTheme2"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.example.ez_rental.activity.AdminViewActivity" />
+        <activity android:name="com.example.ez_rental.activity.User.GuestViewActivity"
             android:theme="@style/AppTheme2"/>
-        <activity android:name="com.example.ez_rental.ActivityPages.AdminViewActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.GuestViewActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.AddVehicleActivity" />
-        <activity android:name="com.example.ez_rental.activity.UpdateActivity" />
-        <activity android:name="com.example.ez_rental.ActivityPages.AddVehicleCategoryActivity" />
-        <activity android:name="com.example.ez_rental.activity.RegisterActivity" />
-        <activity android:name="com.example.ez_rental.activity.LoginActivity" />
-        <activity android:name="com.example.ez_rental.activity.ForgotPassword"
+        <activity android:name="com.example.ez_rental.activity.car.AddCarActivity" />
+        <activity android:name="com.example.ez_rental.activity.car.CarImageUploadActivity" />
+        <activity android:name="com.example.ez_rental.activity.car.EditCarActivity" />
+        <activity android:name="com.example.ez_rental.activity.carDriver.AddCarDriverActivity" />
+        <activity android:name="com.example.ez_rental.activity.carDriver.EditCarDriverActivity" />
+        <activity android:name="com.example.ez_rental.activity.Reservation.ReturnPlaceActivity" />
+        <activity android:name="com.example.ez_rental.activity.AddVehicleActivity" />
+        <activity android:name="com.example.ez_rental.activity.User.UpdateActivity" />
+
+        <activity android:name="com.example.ez_rental.activity.AddVehicleCategoryActivity" />
+        <activity android:name="com.example.ez_rental.activity.User.RegisterActivity" />
+        <activity android:name="com.example.ez_rental.activity.User.LoginActivity" />
+        <activity android:name="com.example.ez_rental.activity.User.ForgotPassword"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name="com.example.ez_rental.activity.AdminLoginActivity" />
-        <activity android:name="com.example.ez_rental.activity.ReserveCarActivity"
+        <activity android:name="com.example.ez_rental.activity.Reservation.ReserveCarActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             >
 
     </activity>
-        <activity android:name="com.example.ez_rental.activity.payment"/>
-        <activity android:name="com.example.ez_rental.activity.MapActivity"/>
-        <activity android:name="com.example.ez_rental.activity.ConfirmationActivity"/>
-        <activity android:name="com.example.ez_rental.activity.ViewCarActivity"
+        <activity android:name="com.example.ez_rental.activity.Payment.payment"/>
+        <activity android:name="com.example.ez_rental.activity.Reservation.MapActivity"/>
+        <activity android:name="com.example.ez_rental.activity.Payment.ConfirmationActivity"/>
+        <activity android:name="com.example.ez_rental.activity.Reservation.CarActivity"/>
+        <activity android:name="com.example.ez_rental.activity.Reservation.ViewCarActivity"
             android:theme="@style/AppTheme2"/>
-        <activity android:name="com.example.ez_rental.activity.PermissionsActivity"/>
-        <activity android:name="com.example.ez_rental.activity.ImageUploadActivity"/>
-        <activity android:name="com.example.ez_rental.ActivityPages.ActivityLauncher" />
-        <activity android:name="com.example.ez_rental.activity.ViewCDActivity"/>
-        <activity android:name="com.example.ez_rental.ActivityPages.ActivitySplash">
-
+        <activity android:name="com.example.ez_rental.activity.Reservation.PermissionsActivity"/>
+        <activity android:name="com.example.ez_rental.activity.User.ImageUploadActivity"/>
+        <activity android:name="com.example.ez_rental.activity.StartUp.ActivityLauncher" />
+        <activity android:name="com.example.ez_rental.activity.Reservation.ViewCDActivity"/>
+        <activity android:name="com.example.ez_rental.activity.StartUp.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+    <!--    <activity android:name=".activity.HomeActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
 
         <meta-data
             android:name="preloaded_fonts"

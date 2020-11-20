@@ -1,5 +1,6 @@
 package com.example.ez_rental.FragmentPages;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,11 +10,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -24,8 +31,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.ez_rental.Adapter.PaymentAdapter;
 import com.example.ez_rental.Model.Payments;
 import com.example.ez_rental.R;
+import com.example.ez_rental.activity.Payment.ViewTransactionActivity;
+import com.example.ez_rental.activity.User.UserViewActivity;
+import com.example.ez_rental.activity.helper.SQLiteHelper;
+import com.example.ez_rental.activity.helper.SessionManager;
 import com.example.ez_rental.app.AppConfig;
-import com.example.ez_rental.helper.SQLiteHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,8 +54,12 @@ public class TransactionFragment extends Fragment implements PaymentAdapter.onPa
     private PaymentAdapter adapter;
     private  String userid;
     private SQLiteHelper db;
+    private SessionManager session;
+    private String userrole;
+    ConstraintLayout layout;
+    boolean check = true;
     public TransactionFragment() {
-        // Required empty public constructor
+
     }
     @Override
     public void setHasOptionsMenu(boolean hasMenu) {
@@ -57,27 +71,68 @@ public class TransactionFragment extends Fragment implements PaymentAdapter.onPa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.transaction_fragment, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        session = new SessionManager(getContext());
         db = new SQLiteHelper(getContext());
-
         HashMap<String, String> user = db.getUserDetails();
-        userid = user.get("User_ID");
-        adapter=loadProducts(view,userid);
-        swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+        HashMap<String, String> admin = db.getAdminDetails();
 
-            adapter=loadProducts(view,userid);
-            adapter.notifyDataSetChanged();
-            swipeRefreshLayout.setRefreshing(false);
+        if(user.get("User_ID")!= null) {
+            userrole = "user";
+        }else if(admin.get("Admin_Id") != null){
+            userrole = "admin";
+        }else
+        {
+            userrole = "guest";
+        }
+        layout = view.findViewById(R.id.layout);
+        layout.setOnClickListener(v -> {
+            if (check) {
+                UserViewActivity.hideBottomNav();
+                check = false;
+            }else{
+                UserViewActivity.showBottomNav();
+                check=true;
+            }
         });
+        if(userrole.contains("user")) {
 
-        swipeRefreshLayout.setColorScheme(android.R.color.background_dark,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+            userid = user.get("User_ID");
+            adapter = loadProducts(view, userid);
+            adapter.sortNameByAsc();
+            swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+            swipeRefreshLayout.setOnRefreshListener(() -> {
 
-        setHasOptionsMenu(true);
+                adapter = loadProducts(view, userid);
+                adapter.sortNameByAsc();
+                adapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            });
 
+            swipeRefreshLayout.setColorScheme(android.R.color.background_dark,
+                    android.R.color.holo_green_light,
+                    android.R.color.holo_orange_light,
+                    android.R.color.holo_red_light);
+
+            setHasOptionsMenu(true);
+        }else
+        {
+            final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.AlertDialogCustom))
+                    .setTitle("Warning")
+                    .setMessage("You are not login as user")
+                    .setPositiveButton("Ok", null)
+                    .setIcon(getResources().getDrawable(R.drawable.ic_warning2))
+                    .show();
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(x -> {
+                dialog.dismiss();
+                HomeFragment fragment1 = new  HomeFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.framelayout, fragment1);
+                fragmentTransaction.commit();
+            });
+        }
         return view;
     }
 
@@ -122,6 +177,7 @@ public class TransactionFragment extends Fragment implements PaymentAdapter.onPa
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             adapter = new PaymentAdapter(newlist,getContext(), this);
+           adapter.sortNameByAsc();
             recyclerView.setAdapter(adapter);
             Volley.newRequestQueue(getContext()).add(stringRequest);
         return adapter;
@@ -131,8 +187,9 @@ public class TransactionFragment extends Fragment implements PaymentAdapter.onPa
     @Override
     public void onClick(int position) {
 
-    /*    Intent CarInfoPage = new Intent(getActivity(), MapActivity.class);
-        startActivity(CarInfoPage);*/
+        Intent TransactionInfoPage = new Intent(getActivity(), ViewTransactionActivity.class);
+        TransactionInfoPage.putExtra("Payments", newlist.get(position));
+        startActivity(TransactionInfoPage);
     }
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.car_search_menu, menu);

@@ -26,7 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.ez_rental.Adapter.Car_DriverAdapter;
 import com.example.ez_rental.Model.Car_Driver;
 import com.example.ez_rental.R;
-import com.example.ez_rental.activity.MapActivity;
+import com.example.ez_rental.activity.Reservation.MapActivity;
 import com.example.ez_rental.app.AppConfig;
 
 import org.json.JSONArray;

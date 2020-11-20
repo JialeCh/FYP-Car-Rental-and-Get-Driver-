@@ -7,7 +7,7 @@
 
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activity.payment">
+    tools:context=".activity.Payment.payment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="315dp"

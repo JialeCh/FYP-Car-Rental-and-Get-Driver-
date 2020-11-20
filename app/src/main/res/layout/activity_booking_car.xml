@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activity.ReserveCarActivity">
+    tools:context=".activity.Reservation.ReserveCarActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -85,7 +85,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Car Rental Time"
+                            android:text="Reservation Duration"
                             android:textColor="@color/colorSecondary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="PICKUP DATE"
-                                android:textColor="#00E676" />
+                                android:textColor="@color/alert" />
 
                             <TextView
                                 android:id="@+id/pickupTimeText"
@@ -118,7 +118,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="PICKUP TIME"
-                                android:textColor="#00E676" />
+                                android:textColor="@color/alert" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -210,7 +210,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="RETURN DATE"
-                                android:textColor="#00E676" />
+                                android:textColor="@color/alert" />
 
                             <TextView
                                 android:id="@+id/returnTimeText"
@@ -219,7 +219,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
                                 android:text="RETURN TIME"
-                                android:textColor="#00E676" />
+                                android:textColor="@color/alert" />
                         </LinearLayout>
 
 

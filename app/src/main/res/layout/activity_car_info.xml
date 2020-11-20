@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.Reservation.CarInfoActivity"
+    >
+
+    <TextView
+        android:id="@+id/carid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Car ID"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_arrow_back_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carid">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/vehicleImage"
+                    app:auto_cycle="true"
+                    app:delay="0"
+                    app:period="2000"
+                    app:corner_radius="20"
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@drawable/ic_logoif"
+                    />
+
+                <TextView
+                    android:id="@+id/vehiclePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/price_tag"
+                    android:backgroundTint="@color/yellow"
+                    android:fontFamily="@font/roboto_medium"
+                    android:padding="13dp"
+                    android:text="RM 50/Day"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="21sp"
+                    app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleImage" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/vehiclePrice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vehiclePrice">
+
+                    <Button
+                        android:id="@+id/btnColor"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/round_card"
+                        android:backgroundTint="@color/colorSecondary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView10"
+                        app:layout_constraintHorizontal_bias="0.084"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/notAvailableText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Color"
+                        android:textColor="@color/colorSecondary"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnColor"
+                        app:layout_constraintStart_toEndOf="@+id/btnColor"
+                        app:layout_constraintTop_toTopOf="@+id/btnColor" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/vehiclePrice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vehiclePrice"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/vehicleSpecCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vehiclePrice">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/vehicle_info_card"
+                        android:paddingBottom="10dp">
+
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="0dp"
+                            android:layout_height="0.3dp"
+                            android:layout_marginTop="4dp"
+                            android:background="#707070"
+                            android:scrollbarThumbHorizontal="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
+
+                        <TextView
+                            android:id="@+id/vehicleSpecsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Car Specs"
+                            android:textColor="@color/colorSecondary"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/yearText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Overview"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
+                            app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
+
+                        <TextView
+                            android:id="@+id/typeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Brand Name"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/seatsText"
+                            app:layout_constraintStart_toStartOf="@+id/modelText"
+                            app:layout_constraintTop_toTopOf="@+id/seatsText"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/seatsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Brand ID"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/mileageText"
+                            app:layout_constraintStart_toStartOf="@+id/manufacturerText"
+                            app:layout_constraintTop_toTopOf="@+id/mileageText" />
+
+                        <TextView
+                            android:id="@+id/mileageText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Seat Cap"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
+                            app:layout_constraintTop_toBottomOf="@+id/yearText" />
+
+                        <TextView
+                            android:id="@+id/modelText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Model Year"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/manufacturerText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/manufacturerText"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/manufacturerText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Fuel Type"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/yearText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.53"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/yearText"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/Overview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Year"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/yearText"
+                            app:layout_constraintTop_toBottomOf="@+id/yearText" />
+
+                        <TextView
+                            android:id="@+id/brand_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Toyota"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/typeText"
+                            app:layout_constraintTop_toBottomOf="@+id/typeText" />
+
+                        <TextView
+                            android:id="@+id/brandId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="200001"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/seatsText"
+                            app:layout_constraintTop_toBottomOf="@+id/seatsText" />
+
+                        <TextView
+                            android:id="@+id/seatCap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="4"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/mileageText"
+                            app:layout_constraintTop_toBottomOf="@+id/mileageText" />
+
+
+                        <TextView
+                            android:id="@+id/yearTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="2001"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/modelText"
+                            app:layout_constraintTop_toBottomOf="@+id/modelText" />
+
+                        <TextView
+                            android:id="@+id/fuel_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Petrol"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="@+id/manufacturerText"
+                            app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Location"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/mileageText"
+                            app:layout_constraintTop_toBottomOf="@+id/mileageText" />
+
+                        <TextView
+                            android:id="@+id/txtLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Kuala Lumpur"
+                            android:textColor="@color/colorSecondary"
+                            app:layout_constraintStart_toStartOf="@+id/textView9"
+                            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="33dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Plate No"
+                            android:textColor="@color/colorSecondary"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/seatsText"
+                            app:layout_constraintTop_toBottomOf="@+id/seatsText" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="TextView"
+                            android:textColor="@color/colorSecondary"
+                            app:layout_constraintStart_toStartOf="@+id/textView12"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btnViewRate"
+                    android:layout_width="150dp"
+                    android:layout_height="@dimen/buttonSize"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/round_button"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="View Rating"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleSpecCard"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

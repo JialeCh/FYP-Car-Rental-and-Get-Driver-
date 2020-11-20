@@ -3,7 +3,7 @@
 
     <gradient
         android:angle="90"
-        android:endColor="@color/light_blu"
+        android:endColor="@color/tabTextColor"
         android:startColor="@color/colorSecondary" />
 
 </shape>

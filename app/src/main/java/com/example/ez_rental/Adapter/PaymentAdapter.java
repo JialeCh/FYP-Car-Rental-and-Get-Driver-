@@ -17,6 +17,8 @@ import com.example.ez_rental.Model.Payments;
 import com.example.ez_rental.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentViewHolder> implements Filterable {
@@ -26,7 +28,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
     private Context mCtx;
     private ArrayList<Payments> PaymentList;
     private ArrayList<Payments> PaymentListfull;
-
 
 
     class PaymentViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
@@ -93,11 +94,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
         return new PaymentViewHolder(view,onPaymentListener);
     }
 
-
-
-
-
-
     @Override
     public void onBindViewHolder(PaymentViewHolder holder, int position) {
         Payments Payments =  PaymentList.get(position);
@@ -106,7 +102,18 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
         holder.payment_amount.setText("RM :" +PaymentList.get(position).getPayment_Amount());
         holder.status.setText(PaymentList.get(position).getPayment_Status());
     }
+    public void sortNameByAsc() {
+        Comparator<Payments> comparator = new Comparator<Payments>() {
 
+            @Override
+            public int compare(Payments object1, Payments object2) {
+                return object1.getPayment_Date().compareToIgnoreCase(object2.getPayment_Date());
+            }
+        };
+        Collections.sort(PaymentList, comparator);
+        notifyDataSetChanged();
+
+    }
     @Override
     public int getItemCount() {
         return PaymentList.size();

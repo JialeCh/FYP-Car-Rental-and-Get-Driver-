@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ActivityPages.CarInfoActivity"
+    tools:context=".activity.Reservation.CarInfoActivity"
     >
 
     <TextView
@@ -246,7 +246,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Manufacturer"
+                            android:text="Brand Name"
                             app:layout_constraintBottom_toBottomOf="@+id/yearText"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.53"
@@ -304,7 +304,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Model"
+                            android:text="Car ID"
                             android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toBottomOf="@+id/modelText" />
@@ -315,7 +315,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Manufacturer"
+                            android:text="Brand Name"
                             android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
@@ -512,7 +512,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="30dp"
-                                    android:text="RM 15"
+                                    android:text="RM 10"
                                     android:textSize="12sp" />
 
                                 <LinearLayout
@@ -631,7 +631,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="30dp"
-                                    android:text="RM 25"
+                                    android:text="RM 20"
                                     android:textSize="12sp" />
 
                                 <LinearLayout
