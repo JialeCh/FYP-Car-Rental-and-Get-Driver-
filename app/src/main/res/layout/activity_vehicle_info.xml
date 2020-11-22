@@ -191,9 +191,10 @@
                             android:id="@+id/yearText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="20dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Year"
+                            android:text="Brand Name"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
                             app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
 
@@ -204,6 +205,7 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Fuel_Type"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/seatsText"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toTopOf="@+id/seatsText"
@@ -215,6 +217,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Seats"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/mileageText"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toTopOf="@+id/mileageText" />
@@ -223,9 +226,10 @@
                             android:id="@+id/mileageText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="32dp"
+                            android:layout_marginTop="40dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Location"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
 
@@ -236,6 +240,7 @@
                             android:layout_marginEnd="44dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Car ID"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/manufacturerText"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/manufacturerText"
@@ -246,10 +251,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Brand Name"
+                            android:text="Color"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@+id/yearText"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.53"
+                            app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/yearText"
                             app:layout_constraintVertical_bias="0.0" />
@@ -262,6 +268,7 @@
                             android:fontFamily="@font/roboto"
                             android:text="Year"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/yearText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
 
@@ -273,6 +280,7 @@
                             android:fontFamily="@font/roboto"
                             android:text="Type"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/typeText"
                             app:layout_constraintTop_toBottomOf="@+id/typeText" />
 
@@ -284,6 +292,7 @@
                             android:fontFamily="@font/roboto"
                             android:text="Seats"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/seatsText"
                             app:layout_constraintTop_toBottomOf="@+id/seatsText" />
 
@@ -295,6 +304,7 @@
                             android:fontFamily="@font/roboto"
                             android:text="Location"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/mileageText"
                             app:layout_constraintTop_toBottomOf="@+id/mileageText" />
 
@@ -306,6 +316,7 @@
                             android:fontFamily="@font/roboto"
                             android:text="Car ID"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toBottomOf="@+id/modelText" />
 
@@ -315,8 +326,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Brand Name"
+                            android:text="Color"
                             android:textColor="@color/black"
+                            android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
 

@@ -95,17 +95,17 @@ public class CarInfoActivity extends AppCompatActivity {
 
 
     private void displayVehicleInfo() {
-        vehicleTitle.setText(car.getCar_Title());
+        vehicleTitle.setText(car.getCar_Title() +" "+ car.getModelYear());
         ImageSlider imageSlider=findViewById(R.id.vehicleImage);
         String id = String.valueOf(car.getCar_Id());
         List<SlideModel> slideModels=new ArrayList<>();
-        slideModels.add(new SlideModel(car.getVImage1()));
-        slideModels.add(new SlideModel(car.getVImage2()));
-        slideModels.add(new SlideModel(car.getVImage3()));
+        slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage1()));
+        slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage2()));
+        slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage3()));
        ;
         imageSlider.setImageList(slideModels,true);
 
-        if(car.getCar_Status().contains("Good")){
+        if(car.getCar_Status().contains("Available")){
             available.setVisibility(ConstraintLayout.VISIBLE);
             notAvailable.setVisibility(ConstraintLayout.INVISIBLE);
             book.setEnabled(true);
@@ -119,8 +119,8 @@ public class CarInfoActivity extends AppCompatActivity {
             book.setText("Car Not Available");
         }
         vehiclePrice.setText("RM" + car.getPricePerDay()+"/Day");
-        year.setText(car.getModelYear()+"");
-        Brand_Name.setText( car.getBrand_Name());
+        year.setText(car.getBrand_Name()+"");
+        Brand_Name.setText( car.getColor());
         model.setText(id);
         mileage.setText(car.getLocation()+"");
         seats.setText(car.getSeating_Cap()+"");

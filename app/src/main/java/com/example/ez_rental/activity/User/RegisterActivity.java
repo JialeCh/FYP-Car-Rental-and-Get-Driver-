@@ -150,15 +150,29 @@ public class RegisterActivity extends Activity {
             Address = addr + street ;User_Profile=" ";
             if (!Username.isEmpty() && !User_Email.isEmpty() && !User_Password.isEmpty()) {
                 if(User_Password.length() > 8){
-                    if(isEmailValid(User_Email) == true){
-                        if(User_Password.compareTo(User_Password2) == 0){
-                            registerUser(User_ID,Username,User_Email,User_ContactNo,Address,User_Password,User_Profile,Driver_license,exdate);
-                        }
-                        else{
+                    if(isEmailValid(User_Email)){
+                        if(Driver_license.length() >11){
+                            if(User_ContactNo.length() > 10 ||User_ContactNo.length() > 9){
+                                if(User_Password.compareTo(User_Password2) == 0){
+                                    registerUser(User_ID,Username,User_Email,User_ContactNo,Address,User_Password,User_Profile,Driver_license,exdate);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),
+                                            "Confirm Password different with Password !", Toast.LENGTH_LONG)
+                                            .show();
+                                }
+                            }else{
+                                Toast.makeText(getApplicationContext(),
+                                        "Invalid Phone Number !", Toast.LENGTH_LONG)
+                                        .show();
+                            }
+
+                        }else{
                             Toast.makeText(getApplicationContext(),
-                                    "Confirm Password different with Password !", Toast.LENGTH_LONG)
+                                    "Invalid format of driver license !", Toast.LENGTH_LONG)
                                     .show();
                         }
+
                     }else {
                         Toast.makeText(getApplicationContext(),
                                 "Wrong email format", Toast.LENGTH_LONG)
@@ -239,7 +253,8 @@ public class RegisterActivity extends Activity {
 
         pDialog.setMessage("Registering ...");
         showDialog();
-
+        User newUser2 = new User(User_ID, Username, User_Email, User_ContactNo,  Adderess, User_Password,User_Profile, Driver_license ,License_ExpiryDate);
+        Log.e(TAG, newUser2.toString());
         StringRequest strReq = new StringRequest(Method.POST,
                 AppConfig.URL_REGISTER, response -> {
                     Log.d(TAG, "Register Response: " + response);
@@ -251,7 +266,6 @@ public class RegisterActivity extends Activity {
                     if (jsonStart >= 0 && jsonEnd >= 0 && jsonEnd > jsonStart) {
                         response = response.substring(jsonStart, jsonEnd + 1);
                     } else {
-                        // deal with the absence of JSON content here
                     }
 
                     response = response.replaceAll("<.*?>", "");
@@ -259,30 +273,21 @@ public class RegisterActivity extends Activity {
                         JSONObject jObj = new JSONObject(response);
                         boolean error = jObj.getBoolean("error");
                         if (!error) {
-                            JSONObject user = jObj.getJSONObject("user");
-                            String User_ID1 = user.getString("User_ID");
-                            String Username1 = user.getString("Username");
-                            String User_Email1 = user.getString("User_Email");
-                            String User_ContactNo1 = user.getString("User_ContactNo");
-                            String Address = user.getString("Address");
-                            String User_Password1 = user.getString("User_Password");
-                            String User_Profile1 = user.getString("User_Profile");
-                            String Driver_license1 = user.getString("Driver_license");
-                            String License_ExpiryDate1 = user.getString("License_ExpiryDate");
-
                             Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
                             User newUser = new User(User_ID, Username, User_Email, User_ContactNo,  Adderess, User_Password,User_Profile, Driver_license ,License_ExpiryDate);
-                            // Launch login activity
-                            Intent Update = new Intent(getApplicationContext(), ImageUploadActivity.class);
-                            Update.putExtra("Image", image);
-                            Update.putExtra("Update", newUser);
-                            Update.putExtra("Activity",activity);
-                            startActivity(Update);
-                            finish();
-                        } else {
+                            Log.e(TAG, newUser.toString());
+                            if(activity.contains(User_Profile)){
+                                Intent Update = new Intent(getApplicationContext(), ImageUploadActivity.class);
+                                Update.putExtra("Image", image);
+                                Update.putExtra("Update", newUser);
+                                Update.putExtra("Activity",activity);
+                                startActivity(Update);
+                                finish();
+                            }else{
+                                finish();
+                            }
 
-                            // Error occurred in registration. Get the error
-                            // message
+                        } else {
                             String errorMsg = jObj.getString("error_msg");
                             Toast.makeText(getApplicationContext(),
                                     errorMsg, Toast.LENGTH_LONG).show();
@@ -293,9 +298,7 @@ public class RegisterActivity extends Activity {
                     }
 
                 }, error -> {
-            Log.e(TAG, "Registration Error: " + error.getMessage());
-            Toast.makeText(getApplicationContext(),
-                    error.getMessage(), Toast.LENGTH_LONG).show();
+
             hideDialog();
         }) {
 
@@ -317,13 +320,7 @@ public class RegisterActivity extends Activity {
 
         };
 
-/*        if(activity.contains(User_Profile)){
-            Intent Update = new Intent(getApplicationContext(), ImageUploadActivity.class);
-            Update.putExtra("Image", image);
-            Update.putExtra("Update", newUser);
-            Update.putExtra("Activity",activity);
-            startActivity(Update);
-        }*/
+
 
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }

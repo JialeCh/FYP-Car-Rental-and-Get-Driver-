@@ -84,7 +84,6 @@ public class CarFragment extends Fragment implements CarsAdapter.onCarsListener{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vehicle, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-        String[] list = {"30001","30002","30003"};
         init(view);
         adapter=loadProducts(view);
         checkAdapter(adapter);

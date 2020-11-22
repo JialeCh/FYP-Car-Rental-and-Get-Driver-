@@ -186,7 +186,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsViewHolder
         if(Cars.getVImage1().compareTo("")==0){
 
         }else{
-            Picasso.get().load(Cars.getVImage1()).into(holder.vehicleImage);
+            Picasso.get().load("http://192.168.1.13/Image/Upload/"+Cars.getVImage1()).into(holder.vehicleImage);
         }
 
         if (Cars.getCar_Status().contains("Good")){

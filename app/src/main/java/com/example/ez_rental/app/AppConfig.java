@@ -3,7 +3,7 @@ package com.example.ez_rental.app;
 public class AppConfig {
 
 	private static String ipAddress="http://192.168.1.13/FYP/";
-	public static double rate =0.0;
+
 	public static String URL_UpReserve     = ipAddress+"UpdateReservation.php";
 	public static String URL_UpReserveCash = ipAddress+"UpdateReservationCash.php";
 	public static String URL_GetFeedback   = ipAddress+"getFeedback.php";
@@ -35,7 +35,7 @@ public class AppConfig {
 	public static String Url_updateCar     = ipAddress+"UpdateCar.php";
 	public static String Url_addCd         = ipAddress+"addCD.php";
 
-
+	public static String Url_cancel         = ipAddress+"Cancel_Reserve.php";
 
 	private static String ipAddress2="http://192.168.1.13/Image/";
 	public static String car_Image       = ipAddress2+"carImageUpload.php";

@@ -161,7 +161,12 @@ public class ViewReservationActivity extends AppCompatActivity {
                     Toast.makeText( getApplicationContext(), "Failed to cancel because reservation has done "+daydiff+" hours ago"  , Toast.LENGTH_SHORT).show();
                 }else{
                     reserveDelete(reservation.getReserve_ID(),reservation.getCar_Id());
-                    Toast.makeText( getApplicationContext(), "Reservation and Payment ("+reservation.getReserve_ID()+") deleted"  , Toast.LENGTH_SHORT).show();
+                    if(reservation.getStatus().contains("Payment")){
+                        Toast.makeText( getApplicationContext(), "Reservation ("+reservation.getReserve_ID()+") cancelled !"  , Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText( getApplicationContext(), "Reservation ("+reservation.getReserve_ID()+") cancelled and payment pending refund !"  , Toast.LENGTH_SHORT).show();
+                    }
+
                     finish();
                 }
 
@@ -322,7 +327,7 @@ public class ViewReservationActivity extends AppCompatActivity {
                 hashMap.put("Reserve_ID", params[0]);
                 hashMap.put("Car_Id", params[1]);
 
-                finalResult = httpParse.postRequest(hashMap, "http://192.168.1.3/android_login_api/Cancel_Reserve.php");
+                finalResult = httpParse.postRequest(hashMap, AppConfig.Url_cancel);
 
                 return finalResult;
             }

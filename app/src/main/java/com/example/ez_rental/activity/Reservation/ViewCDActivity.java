@@ -118,7 +118,7 @@ public class ViewCDActivity extends AppCompatActivity implements Car_DriverAdapt
         newlist.clear();
         for(int i=0; i<list.size();i++){
             String locate = list.get(i).getCD_Status();
-            if(locate .contains("Available"))
+            if(locate .contains("Active"))
             {
                 newlist.add(list.get(i)) ;
             }

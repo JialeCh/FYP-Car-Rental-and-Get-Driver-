@@ -2,7 +2,6 @@
 package com.example.ez_rental.activity.Reservation;
 
 import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +22,7 @@ public class CarActivity extends Activity {
 
     private TextView carid, vehiclePrice,Overview,fuel_type,yearTxt,seatCap,brandId,brand_name,txtLocation,textView13,notAvailableText;
 
-   private Button btnColor,btnViewRate,back;
+   private Button btnViewRate,back;
     private ImageSlider  imageSlider;
 
     private Car car;
@@ -57,24 +56,22 @@ public class CarActivity extends Activity {
         brand_name = findViewById(R.id.brand_name);
         txtLocation = findViewById(R.id.txtLocation);
         textView13= findViewById(R.id.textView13);
-        btnColor = findViewById(R.id. btnColor);
+
         btnViewRate = findViewById(R.id.btnViewRate);
         carid = findViewById(R.id.carid);
         notAvailableText = findViewById(R.id.notAvailableText);
 
 
-        int color = Integer.parseInt(car.getColor());
-        /*color = color * -1;*/
-        notAvailableText.setText("Color code:"+color);
-        btnColor.setBackgroundTintList(ColorStateList.valueOf(color));
+        notAvailableText.setText("Color:"+car.getColor());
+
         if(car.getVImage1().compareTo("") !=0 ){
-            slideModels.add(new SlideModel(car.getVImage1()));
+            slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage1()));
         }
         if(car.getVImage2().compareTo("") !=0 ){
-            slideModels.add(new SlideModel(car.getVImage2()));
+            slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage2()));
         }
         if(car.getVImage3().compareTo("") !=0 ){
-            slideModels.add(new SlideModel(car.getVImage3()));
+            slideModels.add(new SlideModel("http://192.168.1.13/Image/Upload/"+car.getVImage3()));
         }
 
         imageSlider.setImageList(slideModels,true);

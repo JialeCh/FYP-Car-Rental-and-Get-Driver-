@@ -65,7 +65,7 @@ public class payment extends AppCompatActivity implements View.OnClickListener {
         Reservation_ID = intent2.getIntExtra("Reservation_ID",Reservation_ID);
         Car_id = intent2.getIntExtra("Car_Id",Car_id);
         phone_no = intent2.getStringExtra("phone_no");
-        buttonPay = (Button) findViewById(R.id.buttonPay);
+        buttonPay =  findViewById(R.id.buttonPay);
         editTextAmount =  findViewById(R.id.editTextAmount);
         editTextAmount.setText("RM: "+total.toString());
         paymentMethod= findViewById(R.id.radMethod);
