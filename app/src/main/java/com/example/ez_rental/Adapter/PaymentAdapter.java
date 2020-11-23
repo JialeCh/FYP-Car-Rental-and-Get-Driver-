@@ -97,7 +97,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
     @Override
     public void onBindViewHolder(PaymentViewHolder holder, int position) {
         Payments Payments =  PaymentList.get(position);
-        holder.payment_id.setText(PaymentList.get(position).getPayment_ID());
+        holder.payment_id.setText(PaymentList.get(position).getPayment_ID() +"(Reserve ID:"+Payments.getReserve_ID()+")");
         holder.payment_date.setText("Payment Date :"+PaymentList.get(position).getPayment_Date());
         holder.payment_amount.setText("RM :" +PaymentList.get(position).getPayment_Amount());
         holder.status.setText(PaymentList.get(position).getPayment_Status());
@@ -107,7 +107,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentV
 
             @Override
             public int compare(Payments object1, Payments object2) {
-                return object1.getPayment_Date().compareToIgnoreCase(object2.getPayment_Date());
+                return object2.getPayment_Date().compareToIgnoreCase(object1.getPayment_Date());
             }
         };
         Collections.sort(PaymentList, comparator);

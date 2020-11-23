@@ -79,7 +79,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsViewHolder
             } else {
                 String filterPattern = constraint.toString().toLowerCase();
                 for (Car item : CarsListfull) {
-                    if (item.getCar_Title().toLowerCase().contains(filterPattern)) {
+                    if (item.getBrand_Name().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
@@ -189,12 +189,11 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.CarsViewHolder
             Picasso.get().load("http://192.168.1.13/Image/Upload/"+Cars.getVImage1()).into(holder.vehicleImage);
         }
 
-        if (Cars.getCar_Status().contains("Good")){
-            holder.btnStatus.setText("Available");
-        }
-        else{
-            holder.btnStatus.setText("Unavailable");
-        }
+
+            holder.btnStatus.setText(Cars.getCar_Status());
+
+
+
 
     }
 

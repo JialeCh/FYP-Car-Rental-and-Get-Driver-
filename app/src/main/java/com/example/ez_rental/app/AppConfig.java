@@ -34,7 +34,7 @@ public class AppConfig {
 	public static String Url_addCar        = ipAddress+"addCar.php";
 	public static String Url_updateCar     = ipAddress+"UpdateCar.php";
 	public static String Url_addCd         = ipAddress+"addCD.php";
-
+	public static String Url_CHEK         = ipAddress+"CheckUser.php";
 	public static String Url_cancel         = ipAddress+"Cancel_Reserve.php";
 
 	private static String ipAddress2="http://192.168.1.13/Image/";

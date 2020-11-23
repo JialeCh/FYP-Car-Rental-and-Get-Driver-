@@ -15,8 +15,8 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.example.ez_rental.R;
 import com.example.ez_rental.activity.AdminLoginActivity;
-import com.example.ez_rental.activity.User.GuestViewActivity;
 import com.example.ez_rental.activity.User.LoginActivity;
+import com.example.ez_rental.activity.User.UserViewActivity;
 import com.example.ez_rental.activity.helper.SQLiteHelper;
 import com.example.ez_rental.activity.helper.SessionManager;
 
@@ -57,7 +57,7 @@ public class ActivityLauncher extends AppCompatActivity {
         guestView.setOnClickListener(view -> {
             session.setLogin(false);
             Intent i = new Intent(getApplicationContext(),
-                    GuestViewActivity.class);
+                    UserViewActivity.class);
             startActivity(i);
             finish();
         });

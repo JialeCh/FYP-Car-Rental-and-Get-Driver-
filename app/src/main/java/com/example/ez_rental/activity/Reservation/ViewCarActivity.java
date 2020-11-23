@@ -226,6 +226,7 @@ public class ViewCarActivity extends AppCompatActivity implements CarsAdapter.on
         CarInfoPage.putExtra("Return_Place", location2);
         startActivity(CarInfoPage);
 
+
     }
     private void toast(String txt){
         Toast toast = Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_LONG);

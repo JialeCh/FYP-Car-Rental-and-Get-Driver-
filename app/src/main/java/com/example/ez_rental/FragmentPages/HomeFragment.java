@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-
+        UserViewActivity.hideBottomNav();
         mainGrid = view.findViewById(R.id.gridlayout);
         db = new SQLiteHelper(getContext());
         HashMap<String, String> user = db.getUserDetails();

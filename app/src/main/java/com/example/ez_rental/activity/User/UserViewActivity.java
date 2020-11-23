@@ -1,11 +1,9 @@
 package com.example.ez_rental.activity.User;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +24,11 @@ import com.example.ez_rental.FragmentPages.ReservationFragment;
 import com.example.ez_rental.FragmentPages.TransactionFragment;
 import com.example.ez_rental.R;
 import com.example.ez_rental.activity.Reservation.PermissionsActivity;
+import com.example.ez_rental.activity.helper.SQLiteHelper;
+import com.example.ez_rental.activity.helper.SessionManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.HashMap;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 @SuppressLint("ClickableViewAccessibility")
@@ -34,6 +36,9 @@ public class UserViewActivity extends AppCompatActivity  {
     private static AnimatedBottomBar animatedBottomBar;
     private float downRawX, downRawY;
     private float dX, dY;
+    private SQLiteHelper db;
+    SessionManager session;
+    String userrole;
     private FrameLayout frameLayout;
     private HomeFragment accountFragment;
     private static final String TAG = UserViewActivity.class.getSimpleName();
@@ -214,32 +219,53 @@ public class UserViewActivity extends AppCompatActivity  {
     }
 
     private void proceedReservation(){
-        final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
-                .setTitle("Alert Message")
-                .setMessage("Confirm Proceed to Reservation ?")
-                .setPositiveButton("Ok", null)
-                .setNegativeButton("Cancel", null)
-                .setIcon(getResources().getDrawable(R.drawable.ic_locate))
-                .show();
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-        positiveButton.setOnClickListener(x -> {
-            dialog.dismiss();
-            final ProgressDialog progress = new ProgressDialog(this);
-            progress.setTitle("Proceeding");
-            progress.setMessage("Please wait while .....");
-            progress.show();
+        db = new SQLiteHelper(UserViewActivity.this);
+        HashMap<String, String> user = db.getUserDetails();
+        HashMap<String, String> admin = db.getAdminDetails();
+        session = new SessionManager(UserViewActivity.this);
+        if(user.get("User_ID")!= null) {
+            userrole = "user";
+        }else if(admin.get("Admin_Id") != null){
+            userrole = "admin";
+        }else
+        {
+            userrole = "guest";
+        }
+        if(userrole.compareTo("user") == 0){
+            final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
+                    .setTitle("Alert Message")
+                    .setMessage("Confirm Proceed to Reservation ?")
+                    .setPositiveButton("Ok", null)
+                    .setNegativeButton("Cancel", null)
+                    .setIcon(getResources().getDrawable(R.drawable.ic_locate))
+                    .show();
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+            positiveButton.setOnClickListener(x -> {
+                dialog.dismiss();
 
-            Runnable progressRunnable = () -> progress.cancel();
+                startActivity(new Intent(getApplicationContext(), PermissionsActivity.class));
+                finish();
 
-            Handler pdCanceller = new Handler();
-            pdCanceller.postDelayed(progressRunnable, 3000);
-            startActivity(new Intent(getApplicationContext(), PermissionsActivity.class));
-            finish();
+            });
+            negativeButton.setOnClickListener(x -> {
+                dialog.dismiss();
+            });
+        }else{
+            final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
+                    .setTitle("Alert Message")
+                    .setMessage("Only User can proceed to reservation ?")
+                    .setPositiveButton("Ok", null)
 
-        });
-        negativeButton.setOnClickListener(x -> {
-            dialog.dismiss();
-        });
+                    .setIcon(getResources().getDrawable(R.drawable.ic_warning2))
+                    .show();
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+            positiveButton.setOnClickListener(x -> {
+                dialog.dismiss();
+            });
+
+        }
+
     }
 }

@@ -82,6 +82,7 @@ public class CarInfoActivity extends AppCompatActivity {
             informationPage.putExtra("Rent_Place",rent_place+"");
             informationPage.putExtra("Return_Place",return_place+"");
             startActivity(informationPage);
+
         });
 
         insuranceOption.setOnCheckedChangeListener((group, checkedId) -> {
@@ -105,18 +106,19 @@ public class CarInfoActivity extends AppCompatActivity {
        ;
         imageSlider.setImageList(slideModels,true);
 
-        if(car.getCar_Status().contains("Available")){
-            available.setVisibility(ConstraintLayout.VISIBLE);
-            notAvailable.setVisibility(ConstraintLayout.INVISIBLE);
-            book.setEnabled(true);
-            book.setBackground(ContextCompat.getDrawable(CarInfoActivity.this,R.drawable.round_button));
-            book.setText("Reserve This Car");
-        }else{
+        if(car.getCar_Status().contains("Not")){
+
             available.setVisibility(ConstraintLayout.INVISIBLE);
             notAvailable.setVisibility(ConstraintLayout.VISIBLE);
             book.setEnabled(false);
             book.setBackground(ContextCompat.getDrawable(CarInfoActivity.this,R.drawable.disable_button));
             book.setText("Car Not Available");
+        }else{
+            available.setVisibility(ConstraintLayout.VISIBLE);
+            notAvailable.setVisibility(ConstraintLayout.INVISIBLE);
+            book.setEnabled(true);
+            book.setBackground(ContextCompat.getDrawable(CarInfoActivity.this,R.drawable.round_button));
+            book.setText("Reserve This Car");
         }
         vehiclePrice.setText("RM" + car.getPricePerDay()+"/Day");
         year.setText(car.getBrand_Name()+"");

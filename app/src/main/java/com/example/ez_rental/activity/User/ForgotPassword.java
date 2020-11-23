@@ -131,7 +131,8 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     btnVerify.setVisibility(View.GONE);
                     btnSave.setVisibility(View.VISIBLE);
                     et_password.setVisibility(View.VISIBLE);
-
+                    Boolean check = false;
+                    startCountdownTimer(check);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Invalid Code !", Toast.LENGTH_LONG).show();
@@ -145,9 +146,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             {
                String password = et_password.getText().toString();
                PasswordUpdate(email, password);
-                final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme))
+                final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom))
                         .setTitle("Password Updated")
                         .setMessage("Confirmed your new password ?")
+                        .setIcon(getResources().getDrawable(R.drawable.ic_warning2))
                         .setPositiveButton("Ok", null)
                         .setNegativeButton("Cancel", null)
                         .show();
@@ -157,10 +159,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     dialog.dismiss();
                     Intent homepage = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(homepage);
+                    finish();
                     Toast.makeText(getApplicationContext(), "Password Updated", Toast.LENGTH_LONG).show();
                     Boolean check = false;
                     startCountdownTimer(check);
-
                 });
                 negativeButton.setOnClickListener(x -> {
                     dialog.dismiss();
@@ -177,7 +179,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             countDownTimer.cancel();
         }
         else{
-            countDownTimer = new CountDownTimer(160000, 1000) {
+            countDownTimer = new CountDownTimer(200000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
                     tv_timer.setText("Time remaining : " + millisUntilFinished / 1000);
@@ -195,7 +197,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     private void initiateResetPasswordProcess(final String email) {
         String tag_string_req = "req_login";
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                "http://192.168.1.3/android_login_api/CheckUser.php", response -> {
+                AppConfig.Url_CHEK, response -> {
             Log.d(TAG, "Login Response: " + response);
             int jsonStart = response.indexOf("{");
             int jsonEnd = response.lastIndexOf("}");

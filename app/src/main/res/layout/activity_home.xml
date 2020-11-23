@@ -64,7 +64,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/img"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topbar" />
+            app:layout_constraintTop_toBottomOf="@+id/topbar"
+            app:srcCompat="@drawable/avatar_boy" />
 
         <TextView
             android:id="@+id/user_name"

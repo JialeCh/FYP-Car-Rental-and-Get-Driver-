@@ -283,7 +283,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 .setTitle("Return Place")
                                 .setMessage("Confirmed " + location + " as your return place ?")
                                 .setPositiveButton("Yes", null)
-                                .setNegativeButton("Cancel", null)
+                                .setNegativeButton("No", null)
                                 .setIcon(getResources().getDrawable(R.drawable.ic_locate))
                                 .show();
                         Button positiveButton2 = dialog2.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -307,7 +307,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                     });
                     negativeButton.setOnClickListener(x -> {
-                        Toast.makeText(getApplicationContext(), "Close", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     });
                 }

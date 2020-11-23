@@ -22,14 +22,15 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
+import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ez_rental.Model.User;
 import com.example.ez_rental.R;
-import com.example.ez_rental.app.AppConfig;
-import com.example.ez_rental.app.AppController;
 import com.example.ez_rental.activity.helper.SQLiteHelper;
 import com.example.ez_rental.activity.helper.SessionManager;
+import com.example.ez_rental.app.AppConfig;
+import com.example.ez_rental.app.AppController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -154,7 +155,8 @@ public class RegisterActivity extends Activity {
                         if(Driver_license.length() >11){
                             if(User_ContactNo.length() > 10 ||User_ContactNo.length() > 9){
                                 if(User_Password.compareTo(User_Password2) == 0){
-                                    registerUser(User_ID,Username,User_Email,User_ContactNo,Address,User_Password,User_Profile,Driver_license,exdate);
+                                    initiateResetPasswordProcess(User_Email);
+
                                 }
                                 else{
                                     Toast.makeText(getApplicationContext(),
@@ -333,5 +335,58 @@ public class RegisterActivity extends Activity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    private void initiateResetPasswordProcess(final String email) {
+        String tag_string_req = "req_login";
+        Username = ((EditText)findViewById(R.id.firstName)).getText().toString().trim()+ ((EditText)findViewById(R.id.lastName)).getText().toString().trim();
+        User_Email = ((EditText)findViewById(R.id.adminID)).getText().toString().trim();
+        String User_Password = ((EditText)findViewById(R.id.password)).getText().toString().trim();
+        String User_Password2 = ((EditText)findViewById(R.id.confirmPassword)).getText().toString().trim();
+        User_ContactNo = ((EditText)findViewById(R.id.ContactNo)).getText().toString().trim();
+        String addr = ((EditText)findViewById(R.id.addressText)).getText().toString().trim();
+        String street = ((EditText)findViewById(R.id.street)).getText().toString().trim();
+        Driver_license  = ((EditText)findViewById(R.id.user_license_no)).getText().toString().trim();
+        String exdate = exDate.getText().toString();
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.Url_CHEK, response -> {
+            Log.d(TAG, ": " + response);
+            int jsonStart = response.indexOf("{");
+            int jsonEnd = response.lastIndexOf("}");
+            if (jsonStart >= 0 && jsonEnd >= 0 && jsonEnd > jsonStart) {
+                response = response.substring(jsonStart, jsonEnd + 1);
+            } else {
+            }
+            response = response.replaceAll("<.*?>", "");
+            try {
+                JSONObject jObj = new JSONObject(response);
+                boolean error = jObj.getBoolean("error");
+                if (!error) {
+
+                    Toast.makeText(getApplicationContext(),
+                            "Duplicate User Email", Toast.LENGTH_LONG).show();
+                } else {
+
+                    registerUser(User_ID,Username,User_Email,User_ContactNo,Address,User_Password,User_Profile,Driver_license,exdate);
+                }
+            } catch (JSONException e) {
+                // JSON error
+                e.printStackTrace();
+
+                Toast.makeText(getApplicationContext(), "Duplicated User", Toast.LENGTH_LONG).show();
+            }
+
+        }, error -> {
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                return params;
+            }
+
+        };
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 }

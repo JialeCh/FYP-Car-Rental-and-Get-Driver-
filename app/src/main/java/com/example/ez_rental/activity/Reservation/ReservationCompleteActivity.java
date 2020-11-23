@@ -61,6 +61,7 @@ public class ReservationCompleteActivity extends AppCompatActivity {
     private void listenHandler() {
         back.setOnClickListener(v -> {
             Intent homePage = new Intent(ReservationCompleteActivity.this, UserViewActivity.class);
+            homePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(homePage);
             finish();
         });

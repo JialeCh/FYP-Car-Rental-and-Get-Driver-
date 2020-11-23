@@ -96,11 +96,13 @@ public class AccountFragment extends Fragment {
 
         session = new SessionManager(getContext());
         db = new SQLiteHelper(getContext());
+
         HashMap<String, String> user = db.getUserDetails();
         HashMap<String, String> admin = db.getAdminDetails();
 
         if(user.get("User_ID")!= null) {
             userrole = "user";
+
         }else if(admin.get("Admin_Id") != null){
             userrole = "admin";
         }else
@@ -110,6 +112,7 @@ public class AccountFragment extends Fragment {
         if(userrole.contains("user")){
             initComponents(view);
             displayUserInfo();
+
             try {
                 listenHandler();
             } catch (ParseException e) {
@@ -126,7 +129,7 @@ public class AccountFragment extends Fragment {
                     .setIcon(getResources().getDrawable(R.drawable.ic_warning2))
                     .show();
             Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-            Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
             positiveButton.setOnClickListener(x -> {
                 dialog.dismiss();
                 HomeFragment fragment1 = new  HomeFragment();
@@ -342,6 +345,7 @@ public class AccountFragment extends Fragment {
         UpdateClass.execute(User_ID,newPassword);
     }
     private void displayUserInfo() {
+
         GetDataFromSQLite();
         Picasso.get().load(User_Profile2).into(profileImage);
         Usernametxt.setText(Username2);
@@ -442,6 +446,7 @@ public class AccountFragment extends Fragment {
         image= User_Profile2.getBytes();
         Driver_license2=user.get("Driver_license");
         License_ExpiryDate2 = user.get("License_ExpiryDate");
+        refresh(User_Email2, User_Password2);
     }
 
 

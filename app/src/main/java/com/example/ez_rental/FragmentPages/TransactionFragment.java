@@ -177,7 +177,7 @@ public class TransactionFragment extends Fragment implements PaymentAdapter.onPa
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             adapter = new PaymentAdapter(newlist,getContext(), this);
-           adapter.sortNameByAsc();
+            adapter.sortNameByAsc();
             recyclerView.setAdapter(adapter);
             Volley.newRequestQueue(getContext()).add(stringRequest);
         return adapter;

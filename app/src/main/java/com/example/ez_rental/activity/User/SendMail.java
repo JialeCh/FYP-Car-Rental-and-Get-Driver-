@@ -1,6 +1,5 @@
 package com.example.ez_rental.activity.User;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -27,8 +26,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
     private String email;
     private String message;
 
-    //Progressdialog to show while sending email
-    private ProgressDialog progressDialog;
+
 
     //Class Constructor
     public SendMail(Context context, String email, String code){
@@ -42,14 +40,14 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         //Showing progress dialog while sending email
-        progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
+
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         //Dismissing the progress dialog
-        progressDialog.dismiss();
+
         //Showing a success message
         Toast.makeText(context,"Message Sent", Toast.LENGTH_LONG).show();
     }
@@ -95,7 +93,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
                 mm.setSubject("Password Reset Request");
 
                 mm.setText("Hi, Your password reset code is ("+message +"). \n" +
-                        "This code will expire in 120 seconds. \nEnter this code within 120 seconds to reset your password. \n" +
+                        "This code will expire in 200 seconds. \nEnter this code within 200 seconds to reset your password. \n" +
                         "Thank You !!!");
                 Transport.send(mm);
 
